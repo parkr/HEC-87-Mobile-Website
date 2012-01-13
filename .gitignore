@@ -41,3 +41,6 @@ tmtags
 *.egg
 *.deb
 *.rpm
+
+# Sass
+*/.sass-cache/*
