@@ -110,7 +110,7 @@
  *	`manager_index()` and `/manager/controller/index`
  *
  */
-	//Configure::write('Routing.prefixes', array('admin'));
+	Configure::write('Routing.prefixes', array('admin'));
 
 /**
  * Turn off all caching application-wide.
@@ -184,12 +184,12 @@
 /**
  * A random string used in security hashing methods.
  */
-	Configure::write('Security.salt', 'DYhG93b0qyJfIxfs2guVoUubWwvniR2G0FgaC9mi');
+	Configure::write('Security.salt', 'hun94yt8q9xHNA*&(YCT(hn89fgch8c))');
 
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.
  */
-	Configure::write('Security.cipherSeed', '76859309657453542496749683645');
+	Configure::write('Security.cipherSeed', '875623478652893728950683473895061473');
 
 /**
  * Apply timestamps with the last modified time to static assets (js, css, images).
@@ -229,7 +229,7 @@
  * Uncomment this line and correct your server timezone to fix 
  * any date & time related errors.
  */
-	//date_default_timezone_set('UTC');
+	date_default_timezone_set('America/New_York');
 
 /**
  *
@@ -270,7 +270,7 @@
  *
  * Memcache (http://memcached.org/)
  *
- * 	 Cache::config('default', array(
+ * 	Cache::config('default', array(
  *		'engine' => 'Memcache', //[required]
  *		'duration'=> 3600, //[optional]
  *		'probability'=> 100, //[optional]
@@ -291,6 +291,18 @@
  *		'prefix' => Inflector::slug(APP_DIR) . '_', //[optional]  prefix every cache file with this string
  *	));
  */
+ 
+Cache::config('default', array(
+	'engine' => 'Memcache', //[required]
+	'duration'=> 3600, //[optional]
+	'probability'=> 100, //[optional]
+	'prefix' => Inflector::slug(APP_DIR) . '_', //[optional]  prefix every cache file with this string
+	'servers' => array(
+		'127.0.0.1:11211' // localhost, default port 11211
+	), //[optional]
+	'persistent' => true, // [optional] set this to false for non-persistent connections
+	'compress' => false, // [optional] compress data in Memcache (slower, but uses less memory)
+));
 
 /**
  * Pick the caching engine to use.  If APC is enabled use it.
