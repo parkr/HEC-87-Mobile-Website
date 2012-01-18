@@ -31,9 +31,16 @@
  * Single Pages
  */
 	Router::connect('/updates', array('controller' => 'pages', 'action' => 'updates'));
-	Router::connect('/faqs', array('controller' => 'pages', 'action' => 'faqs'));
-	
+	Router::connect('/feedback', array('controller' => 'pages', 'action' => 'feedback'));
 
+/**
+ * Route new names / aliases to controllers.
+ */
+	Router::connect('/directory', array('controller' => 'users'));
+	Router::connect('/f-b', array('controller' => 'menus'));
+	Router::connect('/speakers', array('controller' => 'users', 'action' => 'speakers'));
+	Router::connect('/program', array('controller' => 'events'));
+	
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 
  * how to customize the loading of plugin routes.
