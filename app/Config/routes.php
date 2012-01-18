@@ -30,7 +30,8 @@
 /**
  * Single Pages
  */
-    Router::connect('/updates', array('controller' => 'pages', 'action' => 'updates'));
+	Router::connect('/updates', array('controller' => 'pages', 'action' => 'updates'));
+	Router::connect('/faqs', array('controller' => 'pages', 'action' => 'faqs'));
 	
 
 /**

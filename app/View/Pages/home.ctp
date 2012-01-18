@@ -1,16 +1,11 @@
-<div id="branding">
-    <h1>The Hotel Ezra Cornell</h1>
-    <p>Showcasing Hospitality Education Through Student Leadership</p>
-</div>
-
-<div id="nav-main">
-    <p>Main Menu</p>
-</div>
-
-<div id="content">
-    <ul id="nodes">
-        <li><a href="Homecoming/tailgate.html">Homecoming Tailgate</a></li>
-        <li><a href="About/about.html">Learn About HEC</a></li>
-        <li><a href="http://www.cornellbigred.com/splash.aspx?id=splash_16">About the Game</a></li>
-    </ul>
-</div>
+<ul id="nodes" data-role="listview" data-inset="true" data-filter="true" data-theme="a">
+    <li><a href="program">Program</a></li>
+    <li><a href="speakers">Speakers</a></li>
+    <li><a href="f-b">F&amp;B</a></li>
+	<li><a href="directory">Directory</a></li>
+	<li><a href="updates">Updates</a></li>
+	<li><a href="maps">Maps</a></li>
+	<li><a href="sponsors">Sponsors</a></li>
+	<li><a href="feedback">Feedback</a></li>
+	<li><a href="faqs">FAQs</a></li>
+</ul>
