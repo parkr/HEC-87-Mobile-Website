@@ -4,7 +4,7 @@
 http_path = "/"
 css_dir = "webroot/css"
 sass_dir = "Assets/Sass"
-images_dir = "webroot/images"
+images_dir = "webroot/img"
 
 # You can select your preferred output style here (can be overridden via the command line):
 output_style = :nested # output_style = :expanded or :nested or :compact or :compressed

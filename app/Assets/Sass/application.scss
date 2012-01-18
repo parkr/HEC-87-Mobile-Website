@@ -3,10 +3,12 @@
  * @author Parker Moore, http://www.parkermoore.de/
  */
  
-@import "compass/reset";
+//@import "compass/reset";
 
 @import "jQueryMobile";
-@import "variables";
-@import "layout";
-@import "typography";
-@import "colours";
+
+// Customizations
+
+input {
+	background: #f6f6f6;
+}

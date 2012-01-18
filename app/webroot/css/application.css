@@ -2,53 +2,6 @@
  * Standard CSS for HEC Mobile Website
  * @author Parker Moore, http://www.parkermoore.de/
  */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline; }
-
-body {
-  line-height: 1; }
-
-ol, ul {
-  list-style: none; }
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0; }
-
-caption, th, td {
-  text-align: left;
-  font-weight: normal;
-  vertical-align: middle; }
-
-q, blockquote {
-  quotes: none; }
-  q:before, q:after, blockquote:before, blockquote:after {
-    content: "";
-    content: none; }
-
-a img {
-  border: none; }
-
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
-  display: block; }
-
 /*
  * jQuery Mobile v1.0rc2
  * http://jquerymobile.com/
@@ -334,7 +287,7 @@ a.ui-link-inherit {
 .ui-icon-searchfield:after {
   background: white;
   background: rgba(0, 0, 0, 0.4);
-  background-image: url(images/icons-18-white.png);
+  background-image: url('../img/icons-18-white.png?1326815830');
   background-repeat: no-repeat;
   -moz-border-radius: 9px;
   -webkit-border-radius: 9px;
@@ -345,7 +298,7 @@ a.ui-link-inherit {
 .ui-icon-alt {
   background: #fff;
   background: rgba(255, 255, 255, 0.3);
-  background-image: url(images/icons-18-black.png);
+  background-image: url('../img/icons-18-black.png?1326815830');
   background-repeat: no-repeat; }
 
 /* HD/"retina" sprite
@@ -356,14 +309,14 @@ a.ui-link-inherit {
   .ui-icon-gear, .ui-icon-refresh, .ui-icon-forward, .ui-icon-back,
   .ui-icon-grid, .ui-icon-star, .ui-icon-alert, .ui-icon-info, .ui-icon-home, .ui-icon-search, .ui-icon-searchfield:after,
   .ui-icon-checkbox-off, .ui-icon-checkbox-on, .ui-icon-radio-off, .ui-icon-radio-on {
-    background-image: url(images/icons-36-white.png);
+    background-image: url('../img/icons-36-white.png?1326815830');
     -moz-background-size: 776px 18px;
     -o-background-size: 776px 18px;
     -webkit-background-size: 776px 18px;
     background-size: 776px 18px; }
 
   .ui-icon-alt {
-    background-image: url(images/icons-36-black.png); } }
+    background-image: url('../img/icons-36-black.png?1326815830'); } }
 /* plus minus */
 .ui-icon-plus {
   background-position: 0 50%; }
@@ -452,7 +405,7 @@ a.ui-link-inherit {
 
 /* loading icon */
 .ui-icon-loading {
-  background-image: url(images/ajax-loader.png);
+  background-image: url('../img/ajax-loader.png?1326815830');
   width: 40px;
   height: 40px;
   -moz-border-radius: 20px;
@@ -597,239 +550,5 @@ a.ui-link-inherit {
 .ui-mobile-nosupport-boxshadow .ui-focus {
   outline-width: 2px; }
 
-div#container {
-  margin: 0 auto;
-  width: 100%; }
-
-div#branding {
-  height: 40px; }
-
-div#branding h1, div#branding p {
-  display: none; }
-
-div#nav-main {
-  margin: 0px;
-  padding: .6em 1em;
-  position: relative; }
-
-div#nav-main p#back {
-  position: absolute;
-  top: 8px;
-  left: 4px;
-  width: 33px;
-  height: 29px;
-  padding-top: 1px; }
-
-div#nav-main p#home {
-  position: absolute;
-  top: 8px;
-  right: 4px;
-  width: 36px;
-  height: 29px;
-  padding-top: 1px; }
-
-div#content {
-  padding-bottom: .8em; }
-
-div#content p {
-  margin: .4em 12px 0 12px; }
-
-ul#nodes li {
-  margin: .4em .4em 0 .4em; }
-
-ul#nodes li a {
-  display: block;
-  padding: .7em 1.2em .7em 1.2em; }
-
-li.event h3 {
-  margin: .6em 0 .2em 0;
-  padding: .2em 12px; }
-
-div#content {
-  min-height: 292px; }
-
-div#content li.event p {
-  margin-top: 6px; }
-
-div#content li.event p.when, div#content li.event p.where {
-  margin-top: 0; }
-
-li.sponsor {
-  margin: 12px 12px 0 12px;
-  float: left; }
-
-li.sponsor div {
-  display: table-cell;
-  width: 296px;
-  height: 296px;
-  text-align: center;
-  vertical-align: middle; }
-
-li.sponsor img {
-  vertical-align: middle; }
-
-li.guest {
-  margin: 0 12px; }
-
-li.guest h3 {
-  margin: .6em 0 .2em 0; }
-
-li.guest p {
-  margin-top: 0;
-  text-align: left; }
-
-div#content div.speaker {
-  margin: 12px;
-  position: relative; }
-
-div#content div.speaker img {
-  width: 296px;
-  height: 296px;
-  float: left;
-  margin-right: 12px;
-  margin-bottom: 12px; }
-
-div#content div.speaker h3 {
-  position: absolute;
-  width: 296px;
-  top: 240px;
-  left: 0;
-  padding: .6em 0; }
-
-div#content div.speaker p {
-  margin-left: 0;
-  margin-right: 0; }
-
-div#site-info {
-  margin: .8em auto;
-  width: 84px;
-  text-align: center;
-  position: relative;
-  clear: both; }
-
-div#site-info ul li {
-  float: left;
-  margin-right: 12px; }
-
-div#site-info ul li + li {
-  margin-right: 0; }
-
-div#site-info p {
-  position: absolute;
-  top: 40px;
-  left: -120px;
-  width: 320px;
-  padding-bottom: .6em; }
-
-body, html {
-  font-family: helvetica, arial, sans-serif;
-  font-size: 1.1em; }
-
-p {
-  text-align: justify; }
-
-div#nav-main p {
-  text-align: center;
-  font-weight: bold; }
-
-div#nav-main p#back a, div#nav-main p#home a {
-  text-decoration: none;
-  font-size: 13px;
-  text-transform: capitalize;
-  font-family: arial, sans-serif;
-  font-weight: bold; }
-
-div#content p {
-  font-size: .85em; }
-
-ul#nodes li a {
-  text-decoration: none; }
-
-li.event h3 {
-  font-weight: bold;
-  font-variant: small-caps; }
-
-li.event p.when, li.event p.where {
-  font-size: .8em;
-  font-style: italic; }
-
-li.guest h3 {
-  font-variant: small-caps;
-  font-weight: bold; }
-
-li.guest p {
-  font-size: .8em;
-  font-style: italic; }
-
-div#content div.speaker h3 {
-  text-align: center;
-  font-weight: bold; }
-
-div#site-info p {
-  font-size: .85em;
-  text-align: center; }
-
-div#site-info a:hover {
-  text-decoration: none; }
-
-body, html {
-  color: #333; }
-
-a, a:visited {
-  color: #B31B1B; }
-
-div#branding {
-  background-image: url("../img/branding.png");
-  background-position: 7px 4px;
-  background-repeat: no-repeat; }
-
-div#nav-main {
-  background: #B31B1B; }
-
-div#nav-main p {
-  color: white;
-  text-shadow: rgba(0, 0, 0, 0.496) 0px -1px 0px; }
-
-div#nav-main p#back a, div#nav-main p#home a {
-  color: white;
-  text-overflow: ellipsis;
-  text-shadow: rgba(0, 0, 0, 0.496) 0px -1px 0px; }
-
-div#nav-main p#back {
-  border-image: url("../img/back_button.png") 0 8 0 14 stretch stretch;
-  -webkit-border-image: url("../img/back_button.png") 0 8 0 14 stretch stretch;
-  -moz-border-image: url("../img/back_button.png") 0 8 0 14 stretch stretch;
-  border-width: 0 8px 0 14px; }
-
-div#nav-main p#home {
-  border-image: url("../img/button.png") 0 5 0 5 stretch stretch;
-  -webkit-border-image: url("../img/button.png") 0 5 0 5 stretch stretch;
-  -moz-border-image: url("../img/button.png") 0 5 0 5 stretch stretch;
-  border-width: 0 5px 0 5px; }
-
-div#content {
-  /*border-bottom: 2px dashed #ccc;*/ }
-
-ul#nodes li {
-  background: #ddd;
-  border-radius: .6em; }
-
-ul#nodes li a {
-  color: #333; }
-
-ul#nodes li:hover {
-  background-color: #333; }
-
-ul#nodes li a:hover {
-  color: #ccc; }
-
-li.event h3 {
-  background-color: #333;
-  color: white; }
-
-div#content div.speaker h3 {
-  background-color: #ccc;
-  opacity: .8; }
-
-div#site-info p a {
-  color: #B31B1B; }
+input {
+  background: #f6f6f6; }
