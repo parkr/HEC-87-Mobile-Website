@@ -17,7 +17,6 @@
 		echo $this->Form->input('position');
 		echo $this->Form->input('bio');
 		echo $this->Form->input('picture');
-		echo $this->Form->input('date_created');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit'));?>
