@@ -63,3 +63,11 @@ Cache::config('default', array('engine' => 'File'));
  * CakePlugin::load('DebugKit'); //Loads a single plugin named DebugKit
  *
  */
+
+function full_url(){
+	if($_SERVER['SERVER_NAME'] === "localhost"){
+		return "http://localhost/HEC/Mobile-New";
+	}else{
+		return "http://www.mobile.hotelezracornell.com/New";
+	}
+}
