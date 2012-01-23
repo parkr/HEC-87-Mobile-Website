@@ -71,3 +71,7 @@ function full_url(){
 		return "http://www.mobile.hotelezracornell.com/New";
 	}
 }
+
+function human($text){
+	return ucwords(str_replace("-", " ", trim($text)));
+}
