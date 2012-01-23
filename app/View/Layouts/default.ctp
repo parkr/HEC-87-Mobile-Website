@@ -31,7 +31,19 @@
 		    <p>Showcasing Hospitality Education Through Student Leadership</p>
 		</div>
 		<div data-role="header">
-			<a href="<?php echo full_url(); ?>" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-left jqm-home">Home</a>
+			<?php 
+			if($this->request->params["action"] != "index" && $this->request->params["action"] != "home"):
+				echo $this->Html->link(
+						human($this->request->params["controller"]), 
+						array('controller' => $this->request->params["controller"], 'action' => 'index'), 
+						array(
+							"data-icon" => "arrow-l",
+							"data-direction" => "reverse"
+						)
+				);
+			endif; 
+			?>
+			<a href="<?php echo full_url(); ?>" data-icon="home" data-direction="reverse" data-iconpos="notext" class="ui-btn-right">Home</a>
 		    <h1><?php echo $title_for_layout; ?></h1>
 		</div>
 		<div data-role="content">
@@ -42,7 +54,7 @@
 			<?php echo $content_for_layout; ?>
 		</div>
 		<div data-role="footer">
-			<h4>&copy; 2012 Hotel Ezra Cornell. <?php echo $this->Html->link('Contact HEC', array('controller' => 'pages', 'action' => 'contact')); ?></h4>
+			<h4>&copy; 2012 Hotel Ezra Cornell. <?php echo $this->Html->link('Contact HEC', array('controller' => 'pages', 'action' => 'contact')); ?>.</h4>
 		</div><!-- /footer -->
 		<?php $this->element('sql_dump'); ?>
 	</div>
