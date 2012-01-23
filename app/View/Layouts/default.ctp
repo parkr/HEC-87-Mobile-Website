@@ -42,7 +42,7 @@
 			<?php echo $content_for_layout; ?>
 		</div>
 		<div data-role="footer">
-			<h4>&copy; 2012 Hotel Ezra Cornell. <a href="/contact">Contact Us</a></h4>
+			<h4>&copy; 2012 Hotel Ezra Cornell. <?php echo $this->Html->link('Contact HEC', array('controller' => 'pages', 'action' => 'contact')); ?></h4>
 		</div><!-- /footer -->
 		<?php $this->element('sql_dump'); ?>
 	</div>

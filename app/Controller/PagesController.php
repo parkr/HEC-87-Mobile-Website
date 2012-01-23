@@ -8,7 +8,7 @@ App::uses('AppController', 'Controller');
 class PagesController extends AppController {
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('home', 'updates', 'faqs', 'maps'); // Letting users register themselves
+		$this->Auth->allow('home', 'updates', 'faqs', 'maps', 'feedback', 'contact'); // Letting users register themselves
 	}
 	
 	public function home(){
@@ -22,5 +22,11 @@ class PagesController extends AppController {
 	}
 	public function maps(){
 		$this->set("title_for_layout", "Maps");
+	}
+	public function feedback(){
+		$this->set("title_for_layout", "Feedback");
+	}
+	public function contact(){
+		$this->set("title_for_layout", "Contact");
 	}
 }
