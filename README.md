@@ -6,7 +6,7 @@ The purpose of this site is to povide a tool for Hotel Ezra Cornell attendees fo
 
 ## Technologies Used
 
-HEC Mobile Website uses 3 open-source technologies to accomplish what it does:
+HEC Mobile Website uses 4 open-source technologies to accomplish what it does:
 
 - **CakePHP** for all of the back-end site functionality.
 - **MySQL** for database storage.
