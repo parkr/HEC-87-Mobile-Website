@@ -1,4 +1,4 @@
-Looking for something to do duriung your downtime? Maps with information are below!
+Looking for something to do during your downtime? Maps with information are below!
 
 <ul id="nodes" data-role="listview" data-inset="true" data-theme="a">
 	<li><?php echo $this->Html->link('The Statler Hotel', array('controller' => 'maps', 'action' => 'statler')); ?></li>
