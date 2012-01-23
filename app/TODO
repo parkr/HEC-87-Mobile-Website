@@ -8,5 +8,4 @@ CREATE Controller/Model/Views -> Sponsors
 CREATE View -> Feedback (in Pages)
 Add Maps or get links thereto
 Add new bg and bg gradient to list separators
-Get rid of 'Back' button for all 'Pages' pages
-11
+Fix issue with database not being able to connect on the remote server
