@@ -4,7 +4,7 @@
 	<li><?php echo $this->Html->link('F&B', array('controller' => 'menus')); ?></li>
 	<li><?php echo $this->Html->link('Directory', array('controller' => 'users')); ?></li>
 	<li><?php echo $this->Html->link('Updates', array('controller' => 'pages', 'action' => 'updates')); ?></li>
-	<li><a href="maps">Maps</a></li>
+	<li><?php echo $this->Html->link('Maps', array('controller' => 'pages', 'action' => 'maps')); ?></li>
 	<li><?php echo $this->Html->link('Sponsors', array('controller' => 'sponsors')); ?></li>
 	<li><?php echo $this->Html->link('Feedback', array('controller' => 'pages', 'action' => 'feedback')); ?></li>
 	<li><?php echo $this->Html->link('FAQs', array('controller' => 'faqs')); ?></li>
