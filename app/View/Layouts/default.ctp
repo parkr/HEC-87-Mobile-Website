@@ -32,7 +32,7 @@
 		</div>
 		<div data-role="header">
 			<?php 
-			if($this->request->params["action"] != "index" && $this->request->params["action"] != "home"):
+			if($this->request->params["action"] != "index" && $this->request->params["action"] != "home" && $this->request->params["controller"] != "pages"):
 				echo $this->Html->link(
 						human($this->request->params["controller"]), 
 						array('controller' => $this->request->params["controller"], 'action' => 'index'), 
