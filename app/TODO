@@ -6,3 +6,4 @@ CREATE Controller/Model/Views -> Events (Program)
 CREATE Controller/Model/Views -> Menus (F&B)
 CREATE Controller/Model/Views -> Sponsors
 CREATE View -> Feedback (in Pages)
+Add Maps or get links thereto
