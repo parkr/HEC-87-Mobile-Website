@@ -1,19 +1,17 @@
-<div class="pages view">
-<h2><?php  echo __('Page');?></h2>
-	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($page['Page']['id']); ?>
-			&nbsp;
-		</dd>
-	</dl>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Page'), array('action' => 'edit', $page['Page']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Page'), array('action' => 'delete', $page['Page']['id']), null, __('Are you sure you want to delete # %s?', $page['Page']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Pages'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Page'), array('action' => 'add')); ?> </li>
-	</ul>
-</div>
+<h2>Stay up-to-date with HEC's latest tweets!</h2>
+<p>
+	Follow @HtlEzraCornell for the latest.
+</p>
+<ul data-role="listview">
+	<?php foreach($data as $tweet): ?>
+	<li>
+		<h3><?php echo implode(" ", array_splice(explode(" ", str_replace("HtlEzraCornell: ", "", $tweet['description'])), 0, 5)) . " . . . "; ?></h3>
+		<p>
+			<?php echo linkify(str_replace("HtlEzraCornell: ", "", $tweet['description'])); ?>
+		</p>
+		<p class="ui-li-aside">
+			<?php echo date("F j, Y \a\\t g:i a", strtotime($tweet['pubDate'])); ?>
+		</p>
+	</li>
+	<?php endforeach; ?>
+</ul>

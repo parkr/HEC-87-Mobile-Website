@@ -6,6 +6,9 @@ App::uses('AppController', 'Controller');
  * @property Page $Page
  */
 class PagesController extends AppController {
+	private $rss_feed_url = "http://api.twitter.com/1/statuses/user_timeline.rss?screen_name=HtlEzraCornell";
+	private $rss_item;
+	
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allow('home', 'updates', 'faqs', 'feedback', 'contact');
@@ -16,6 +19,11 @@ class PagesController extends AppController {
 	}
 	public function updates(){
 		$this->set("title_for_layout", "Updates");
+		
+		App::import('Utility', 'Xml');
+		$parsed_xml =& Xml::build($this->rss_feed_url);
+		$this->rss_item = Xml::toArray($parsed_xml);
+		$this->set('data', $this->rss_item['rss']['channel']['item']);
 	}
 	public function faqs(){
 		$this->set("title_for_layout", "FAQs");
