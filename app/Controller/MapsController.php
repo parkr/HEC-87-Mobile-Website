@@ -22,9 +22,6 @@ class MapsController extends AppController {
 	public function sha(){
 		$this->set("title_for_layout", $this->_makeTitle("The School of Hotel Administration"));
 	}
-	public function cornell(){
-		$this->set("title_for_layout", $this->_makeTitle("Cornell University Campus"));
-	}
 	public function collegetown(){
 		$this->set("title_for_layout", $this->_makeTitle("Collegetown"));
 	}
