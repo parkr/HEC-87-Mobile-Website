@@ -817,3 +817,10 @@ a.ui-link-inherit {
 /* line 16, ../../Assets/Sass/application.scss */
 .ui-footer .ui-link {
   text-shadow: none; }
+
+/* line 20, ../../Assets/Sass/application.scss */
+#speaker_page {
+  text-align: center; }
+  /* line 22, ../../Assets/Sass/application.scss */
+  #speaker_page p#bio {
+    text-align: left; }

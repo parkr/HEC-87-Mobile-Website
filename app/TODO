@@ -2,13 +2,13 @@ Fix User Auth + allow to add users
 Figure out how to implement admin functions
 Figure out how to add date_created to user when adding automatically
 Fix header
-CREATE Controller/Model/Views -> Speakers - do not set up as users
 CREATE Controller/Model/Views -> Menus (F&B)
 CREATE Controller/Model/Views -> Sponsors
 CREATE View -> Feedback (in Pages)
 Add Maps or get links thereto
 Add new bg and bg gradient to list separators
-Fix issue with database not being able to connect on the remote server
+Fix issue with app not being able to connect on the remote server
 Make Links to FB/Tw/Flickr point to a new tab and function
 Fix Updates page
 Fix 'view' view for Events
+Add ONLY Gala Menu to Menus (F&B)

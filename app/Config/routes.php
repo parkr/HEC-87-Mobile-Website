@@ -38,7 +38,7 @@
  */
 	Router::connect('/directory', array('controller' => 'users'));
 	Router::connect('/f-b', array('controller' => 'menus'));
-	Router::connect('/speakers', array('controller' => 'users', 'action' => 'speakers'));
+	//Router::connect('/speakers', array('controller' => 'users', 'action' => 'speakers'));
 	Router::connect('/program', array('controller' => 'events'));
 	
 /**
