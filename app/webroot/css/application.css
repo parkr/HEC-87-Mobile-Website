@@ -833,3 +833,12 @@ a.ui-link-inherit {
   #sponsor_page p.details {
     text-align: left;
     text-indent: 40px; }
+
+/* line 42, ../../Assets/Sass/application.scss */
+dl dt {
+  margin: 35px 0 15px 0;
+  background-color: #eceadd;
+  font-weight: normal; }
+/* line 47, ../../Assets/Sass/application.scss */
+dl dd {
+  margin-bottom: 10px; }

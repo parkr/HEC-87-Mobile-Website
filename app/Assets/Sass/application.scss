@@ -37,3 +37,14 @@
 	}
 	
 }
+
+dl {
+	dt {
+		margin: 35px 0 15px 0;
+		background-color: darken(#f0eee4, 2%);
+		font-weight: normal;
+	}
+	dd {
+		margin-bottom: 10px;
+	}
+}

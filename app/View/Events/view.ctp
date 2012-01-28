@@ -13,7 +13,7 @@
 		</dd>
 		<dt><?php echo __('Time'); ?></dt>
 		<dd>
-			<?php echo h($event['Event']['start_time'] .' – '. $event['Event']['end_time']); ?>
+			<?php echo h(date("l, g:i a", strtotime($event['Event']['start_time']))); ?> &mdash; <?php echo h(date("l, g:i a", strtotime($event['Event']['end_time']))); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Location'); ?></dt>
