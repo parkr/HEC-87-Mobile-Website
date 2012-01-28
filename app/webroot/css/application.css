@@ -822,5 +822,6 @@ a.ui-link-inherit {
 #speaker_page {
   text-align: center; }
   /* line 22, ../../Assets/Sass/application.scss */
-  #speaker_page p#bio {
-    text-align: left; }
+  #speaker_page p#bio, #speaker_page p.bio {
+    text-align: left;
+    text-indent: 40px; }

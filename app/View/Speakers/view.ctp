@@ -13,7 +13,12 @@
 			); 
 		?>
 		<p id="bio">
-			<?php echo nl2br($speaker['Speaker']['bio']); ?>
+			<?php
+				$paras = explode("\n\n", $speaker['Speaker']['bio']);
+				foreach($paras as $para){
+					echo $this->Html->para('bio', $para);
+				}
+			?>
 		</p>
 	</p>
 	

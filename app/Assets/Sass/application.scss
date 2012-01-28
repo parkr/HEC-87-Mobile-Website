@@ -19,7 +19,8 @@
 
 #speaker_page {
 	text-align: center;
-	p#bio {
+	p#bio, p.bio {
 		text-align: left;
+		text-indent: 40px;
 	}
 }
