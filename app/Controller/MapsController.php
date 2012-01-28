@@ -15,6 +15,7 @@ class MapsController extends AppController {
 	
 	public function index(){
 		$this->set("title_for_layout", $this->name);
+		$this->set("maps", $this->Map->find('all', array('order' => 'Map.order ASC')));
 	}
 	public function statler(){
 		$this->set("title_for_layout", $this->_makeTitle("The Statler Hotel"));
