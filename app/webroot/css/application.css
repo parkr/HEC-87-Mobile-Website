@@ -825,3 +825,11 @@ a.ui-link-inherit {
   #speaker_page p#bio, #speaker_page p.bio {
     text-align: left;
     text-indent: 40px; }
+
+/* line 28, ../../Assets/Sass/application.scss */
+#sponsor_page {
+  text-align: center; }
+  /* line 33, ../../Assets/Sass/application.scss */
+  #sponsor_page p.details {
+    text-align: left;
+    text-indent: 40px; }
