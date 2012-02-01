@@ -87,7 +87,5 @@ class Menu extends AppModel {
 			'order' => ''
 		)
 	);
-}
-
 
 }
