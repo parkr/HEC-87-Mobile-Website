@@ -46,7 +46,7 @@
 			<a href="<?php echo full_url(); ?>" data-icon="home" data-direction="reverse" data-iconpos="notext" class="ui-btn-right">Home</a>
 		    <h1><?php echo $title_for_layout; ?></h1>
 		</div>
-		<div data-role="content">
+		<div data-role="content" id="<?php echo $this->params['controller'] ?>">
 			<?php $flash = $this->Session->flash(); ?>
 			<?php if($flash != ""): ?><div data-role="header">
 				<?php echo $flash; ?>
