@@ -6,4 +6,4 @@ Looking for something to do during your downtime? Maps with information are belo
 			echo $this->Html->tag('li', $this->Html->link($map['Map']['name'], (($map['Map']['url'] != "") ? $map['Map']['url'] : "#"), array("target" => "_blank")));
 		}
 	?>
-</ul><?
+</ul>
