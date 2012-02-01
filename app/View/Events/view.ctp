@@ -26,5 +26,13 @@
 			<?php echo h($event['Event']['photo']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Menus'); ?></dt>
+		<dd>
+			<?php foreach($event['Menu'] as $menu): ?>
+			<?php echo $this->Html->link($menu['name'], array('controller' => 'menus', 'action' => 'view', $menu['id'])); ?><br>
+			<?php endforeach; ?>
+			&nbsp;
+		</dd>
+		
 	</dl>
 </div>
