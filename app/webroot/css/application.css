@@ -879,3 +879,8 @@ dl dd {
   background-color: #fee27b;
   color: #716f73;
   text-shadow: none; }
+
+/* line 78, ../../Assets/Sass/application.scss */
+.details {
+  color: #a1988b;
+  padding: 5px 0px; }
