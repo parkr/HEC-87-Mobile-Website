@@ -1,4 +1,4 @@
-<?php $alias = 'User'; pr($people); ?>
+<?php $alias = 'User'; ?>
 <ul id="nodes" data-role="listview" data-inset="true" data-theme="a">
 	<?php
 		foreach($people as $person){

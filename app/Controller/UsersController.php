@@ -11,6 +11,7 @@ class UsersController extends AppController {
 	public $account_types = array('student', 'attendee');
 
 	public function beforeFilter() {
+		$this->Auth->autoRedirect = false;
 		parent::beforeFilter();
 		$this->Auth->deny('view'); // Cannot see user profiles unless logged in
 		$this->Auth->allow('register', 'login'); // Letting users register themselves
@@ -18,6 +19,7 @@ class UsersController extends AppController {
 
 	public function index(){ $this->set('account_types', $this->account_types); }
 	public function students(){
+		$this->set('title_for_layout', 'Students');
 		$params = array(
 			'conditions' => array('User.type' => 'student'),
 			'order' => array('User.name ASC')
@@ -25,6 +27,7 @@ class UsersController extends AppController {
 		$this->set('people', $this->User->find('all', $params));
 	}
 	public function attendees(){
+		$this->set('title_for_layout', 'Attendees');
 		$params = array(
 			'conditions' => array('User.type' => 'attendee'),
 			'order' => array('User.name ASC')
