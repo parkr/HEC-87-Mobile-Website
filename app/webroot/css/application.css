@@ -876,4 +876,6 @@ dl dd {
 .message {
   padding: 10px;
   border: #fccc17 2px solid;
-  background-color: #fee27b; }
+  background-color: #fee27b;
+  color: #716f73;
+  text-shadow: none; }

@@ -67,15 +67,20 @@ class UsersController extends AppController {
 		$this->set('type', (isset($this->params->query['type']) && $this->params->query['type'] != "" && in_array($this->params->query['type'], $this->account_types)) ? $this->params->query['type'] : "student");
 		if ($this->request->is('post')) {
 			$this->User->create();
-			$this->request->data['User']['role'] = "user";
-			$this->request->data['User']['date_created'] = date("Y-m-d H:i:s");
-			if ($this->User->save($this->request->data)) {
-				$id = $this->User->id;
-				$this->request->data['User'] = array_merge($this->request->data["User"], array('id' => $id));
-				$this->Auth->login($this->request->data['User']);
-				$this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
+			
+			if($this->request->data['User']['password'] != $this->request->data['User']['confirm_password']){
+				$this->Session->setFlash(__('Your passwords do not match.'));
 			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$this->request->data['User']['role'] = "user";
+				$this->request->data['User']['date_created'] = date("Y-m-d H:i:s");
+				if ($this->User->save($this->request->data)) {
+					$id = $this->User->id;
+					$this->request->data['User'] = array_merge($this->request->data["User"], array('id' => $id));
+					$this->Auth->login($this->request->data['User']);
+					$this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
+				} else {
+					$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				}
 			}
 		}
 	}
