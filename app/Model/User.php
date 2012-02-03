@@ -16,6 +16,12 @@ class User extends AppModel {
 	
 	public $name = 'User';
 	
+	public function emailExists($email){
+		return $this->find('count', array(
+			'conditions' => array('User.email' => $email)
+		)) > 0;
+	}
+	
 /**
  * Display field
  *
