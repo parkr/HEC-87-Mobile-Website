@@ -42,7 +42,7 @@
 							"data-direction" => "reverse"
 						)
 				);
-			endif; 
+			endif;
 			?>
 			<a href="<?php echo full_url(); ?>" data-icon="home" data-direction="reverse" data-iconpos="notext" class="ui-btn-right">Home</a>
 		    <h1><?php echo $title_for_layout; ?></h1>
@@ -53,6 +53,7 @@
 				<?php echo $flash; ?>
 			</div><?php endif; ?>
 			<?php echo $content_for_layout; ?>
+			<?php if(AuthComponent::user('id') > 0){ echo "Logged in as ". AuthComponent::user('name') . ". " . $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout')); }else{ echo $this->Html->link('Login', array('controller' => 'users', 'action' => 'login')); } ?>
 		</div>
 		<div data-role="footer">
 			<h4>&copy; 2012 Hotel Ezra Cornell. <?php echo $this->Html->link('Contact', array('controller' => 'pages', 'action' => 'contact')); ?>.</h4>

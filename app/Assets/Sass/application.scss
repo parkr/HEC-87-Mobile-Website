@@ -66,3 +66,10 @@ dl {
 	color: #f6f6f6;
 	text-shadow: none;
 }
+
+.message {
+	padding: 10px;
+	border: darken(#fdd749, 10%) 2px solid;
+	background-color: lighten(#fdd749, 10%);
+	
+}

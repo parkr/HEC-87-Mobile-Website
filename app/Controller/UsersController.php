@@ -8,11 +8,29 @@ App::uses('AppController', 'Controller');
  */
 class UsersController extends AppController {
 
-	public $account_types = array('student', 'attendee', 'speaker');
+	public $account_types = array('student', 'attendee');
 
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('register'); // Letting users register themselves
+		$this->Auth->deny('view'); // Cannot see user profiles unless logged in
+		$this->Auth->allow('register', 'login'); // Letting users register themselves
+	}
+
+	public function index(){ $this->set('account_types', $this->account_types); }
+	public function students(){
+		$params = array(
+			'conditions' => array('User.type' => 'student'),
+			'order' => array('User.name ASC')
+		);
+		$this->set('people', $this->User->find('all', $params));
+	}
+	public function attendees(){
+		$params = array(
+			'conditions' => array('User.type' => 'attendee'),
+			'order' => array('User.name ASC')
+		);
+		$this->set('people', $this->User->find('all', $params));
+		
 	}
 
 	public function login() {
@@ -20,13 +38,20 @@ class UsersController extends AppController {
 			if ($this->Auth->login()) {
 				return $this->redirect($this->Auth->redirect());
 			} else {
-				$this->Session->setFlash(__('Username or password is incorrect'), 'default', array(), 'auth');
+				$this->Session->setFlash(__('Username or password is incorrect'. AuthComponent::password($this->request->data['User']['password'])), 'default', array(), 'auth');
 			}
 		}
 	}
 
 	public function logout() {
-		$this->redirect($this->Auth->logout());
+		$redirect_to = $this->Auth->logout();
+		if($redirect_to){
+			$this->Session->setFlash('You have been successfully logged out.');
+			$this->redirect($redirect_to);
+		}else{
+			$this->Session->setFlash('You could not be logged out.');
+			$this->redirect($redirect_to);
+		}
 	}
 
 /**
@@ -45,7 +70,7 @@ class UsersController extends AppController {
 				$id = $this->User->id;
 				$this->request->data['User'] = array_merge($this->request->data["User"], array('id' => $id));
 				$this->Auth->login($this->request->data['User']);
-				$this->redirect(array('controller' => 'pages', 'action' => 'home'));
+				$this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
 			} else {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
 			}
@@ -53,9 +78,24 @@ class UsersController extends AppController {
 	}
 
 	public function admin_login(){
-		$this->set('user_id', $this->Auth->user('id'));
-		$this->set('isAuthorized', $this->Auth->user());
+		if($this->isAuthorized($this->User->find('first', array('conditions' => array('User.id' => $this->Auth->user('id')))))){ $this->set("good", "YOU'RE GOOD HOMIE"); }
+		else{ $this->redirect(array('action' => 'login', 'admin' => false)); }
 	}
+
+/**
+ * view method
+ *
+ * @param string $id
+ * @return void
+ */
+	public function view($id = null) {
+		$this->User->id = $id;
+		if (!$this->User->exists()) {
+			throw new NotFoundException(__('Invalid event'));
+		}
+		$this->set('user', $this->User->read(null, $id));
+	}
+	
 
 /**
  * admin_index method

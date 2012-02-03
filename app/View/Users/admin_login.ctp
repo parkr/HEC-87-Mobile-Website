@@ -1,6 +1,5 @@
 <?php
 	
-echo $user_id . "\n";
-echo $isAuthorized;
-	
+echo $good;
+echo $user;
 ?>
