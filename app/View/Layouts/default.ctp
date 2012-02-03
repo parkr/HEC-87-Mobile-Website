@@ -9,8 +9,9 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile.structure-1.0.min.css" type="text/css" media="screen" charset="utf-8" /> 
 	<?php echo $this->Html->css("application"); ?>
 	<link rel="apple-touch-icon" href="img/hec-logo-icon.png" />
-<?php echo $scripts_for_layout; ?>
 	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script> 
+	<?php echo $this->Html->script("application"); ?>
+	<?php echo $scripts_for_layout; ?>
 	<script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
 	<script type="text/javascript">
 		var _gaq = _gaq || [];

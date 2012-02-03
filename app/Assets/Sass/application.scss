@@ -19,7 +19,7 @@
 	//background-color: darken(#d8cfc7, 50%);
 }
 
-.ui-input-search {
+.ui-input-search, input.ui-input-text {
 	background: white;
 }
 
@@ -57,4 +57,12 @@ dl {
 	dd {
 		margin-bottom: 10px;
 	}
+}
+
+.error-message {
+	padding: 10px;
+	border: darken(#f00, 10%) 2px solid;
+	background-color: lighten(#f00, 10%);
+	color: #f6f6f6;
+	text-shadow: none;
 }

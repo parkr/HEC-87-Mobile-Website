@@ -832,7 +832,7 @@ a.ui-link-inherit {
   background: linear-gradient(top, #fcfcfc, #b8b1a7); }
 
 /* line 22, ../../Assets/Sass/application.scss */
-.ui-input-search {
+.ui-input-search, input.ui-input-text {
   background: white; }
 
 /* line 26, ../../Assets/Sass/application.scss */
@@ -863,3 +863,11 @@ dl dt {
 /* line 57, ../../Assets/Sass/application.scss */
 dl dd {
   margin-bottom: 10px; }
+
+/* line 62, ../../Assets/Sass/application.scss */
+.error-message {
+  padding: 10px;
+  border: #cc0000 2px solid;
+  background-color: #ff3333;
+  color: #f6f6f6;
+  text-shadow: none; }
