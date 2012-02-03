@@ -14,10 +14,17 @@ echo $this->Html->tag('h3', h($event['Event']['location']));
 		<dd><?php echo h($event['Event']['description']); ?></dd>
 		<dt><?php echo __('Menus'); ?></dt>
 		<dd>
-			<?php foreach($event['Menu'] as $menu): ?>
-			<?php echo $this->Html->link($menu['name'], array('controller' => 'menus', 'action' => 'view', $menu['id'])); ?><br>
-			<?php endforeach; ?>
-			&nbsp;
+			<?php
+				$output = array();
+				foreach($event['Menu'] as $menu){
+					$output[] = $this->Html->link($menu['name'], array('controller' => 'menus', 'action' => 'view', $menu['id']));
+				}
+				for($i=0; $i<count($output); $i++){
+					echo $output[$i];
+					if($i < count($output)-1){ echo '<br>'; }
+				}
+				
+			?>
 		</dd>
 		<dt><?php echo __('Photo'); ?></dt>
 		<dd>
