@@ -32,11 +32,15 @@
  */
 	Router::connect('/updates', array('controller' => 'pages', 'action' => 'updates'));
 	Router::connect('/feedback', array('controller' => 'pages', 'action' => 'feedback'));
+	Router::connect('/login', array('controller' => 'users', 'action' => 'login'));
+	Router::connect('/logout', array('controller' => 'users', 'action' => 'logout'));
+	Router::connect('/register', array('controller' => 'users', 'action' => 'register'));
 
 /**
  * Route new names / aliases to controllers.
  */
-	Router::connect('/directory', array('controller' => 'users'));
+ 	Router::connect('/directory', array('controller' => 'users'));
+	Router::connect('/directory/:action', array('controller' => 'users'));
 	//Router::connect('/f-b', array('controller' => 'menus'));
 	Router::connect('/program', array('controller' => 'events'));
 	
