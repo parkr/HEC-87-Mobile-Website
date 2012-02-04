@@ -1,6 +1,6 @@
 <h2>Stay up-to-date with HEC's latest tweets!</h2>
 <p>
-	Follow <?php $this->Html->link('@HtlEzraCornell', 'https://twitter.com/HtlEzraCornell'); ?> for the latest.
+	Follow <?php echo $this->Html->link('@HtlEzraCornell', 'https://twitter.com/HtlEzraCornell'); ?> for the latest.
 </p>
 <ul data-role="listview">
 	<?php foreach($data as $tweet): ?>
