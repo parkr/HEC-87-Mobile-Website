@@ -7,7 +7,7 @@ $(document).ready(function() {
 	});
 	console && console.log && console.log("Changing .ui-bar-c to .ui-bar-a");
 	setTimeout(function(){ 
-		$('[role="search"]').addClass("ui-bar-a").removeClass("ui-bar-c");
+		$('[role="search"]').removeClass("ui-bar-c");//.addClass("ui-bar-a")
 		$('[data-theme="c"]').removeClass("ui-bar-b").addClass("ui-bar-c");
 	}, 100);
 	
