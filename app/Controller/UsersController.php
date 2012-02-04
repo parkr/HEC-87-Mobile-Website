@@ -49,7 +49,7 @@ class UsersController extends AppController {
 			if ($this->Auth->login()) {
 				return $this->redirect($this->Auth->redirect());
 			} else {
-				$this->Session->setFlash(__('Username or password is incorrect'. AuthComponent::password($this->request->data['User']['password'])), 'default', array(), 'auth');
+				$this->Session->setFlash(__('Username or password is incorrect or you are not a registered user.'), 'default', array(), 'auth');
 			}
 		}
 	}
@@ -105,6 +105,7 @@ class UsersController extends AppController {
  		$this->set('user', $this->User->read(null, $id));
  	}
 	public function edit($id = null) {
+		$this->set('title_for_layout', 'Edit Profile');
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));
