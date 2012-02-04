@@ -10,6 +10,9 @@ $links = array(
 	$this->Html->link('Feedback', array('controller' => 'pages', 'action' => 'feedback'), array('data-prefetch' => 'true')),
 	$this->Html->link('FAQs', array('controller' => 'faqs'), array('data-prefetch' => 'true'))
 );
+if(AuthComponent::user('id') > 0){
+	$links[] = $this->Html->link('Account', array('controller' => 'users', 'action' => 'edit', AuthComponent::user('id')), array('data-icon' => 'gear'));
+}
 echo $this->Html->nestedList($links, array(
 	'data-role' => 'listview',
 	'id' => 'nodes',

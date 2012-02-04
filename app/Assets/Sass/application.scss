@@ -95,3 +95,52 @@ dl {
 	color: #a1988b;
 	padding: 5px 0px;
 }
+
+@mixin button-up($base-color){
+	text-decoration: none;
+	border: 1px solid darken($base-color, 10%);
+	background: $base-color;
+	font-weight: bold;
+	color: #fff;
+	text-shadow: 0 -1px 1px #000;
+	$to: $base-color;
+	$from: lighten($base-color, 10%);
+	background-image: -webkit-gradient(linear,left top,left bottom,from($from),to($to));
+	background-image: -webkit-linear-gradient($from,$to);
+	background-image: -moz-linear-gradient($from,$to);
+	background-image: -ms-linear-gradient($from,$to);
+	background-image: -o-linear-gradient($from,$to);
+	background-image: linear-gradient($from,$to);
+}
+
+@mixin button-hover($base-color){
+	text-decoration: none;
+	border: 1px solid darken($base-color, 20%);
+	background: darken($base-color, 10%);
+	font-weight: bold;
+	color: #fff;
+	text-shadow: 0 -1px 1px #000;
+	$to: lighten($base-color, 5%);
+	$from: lighten($base-color, 20%);
+	background-image: -webkit-gradient(linear,left top,left bottom,from($from),to($to));
+	background-image: -webkit-linear-gradient($from,$to);
+	background-image: -moz-linear-gradient($from,$to);
+	background-image: -ms-linear-gradient($from,$to);
+	background-image: -o-linear-gradient($from,$to);
+	background-image: linear-gradient($from,$to);
+	
+}
+
+.ui-btn-up-g {
+	@include button-up(#6bb352);
+}
+.ui-btn-hover-g {
+	@include button-hover(#6bb352);
+}
+
+.ui-btn-up-r {
+	@include button-up(#c51833);
+}
+.ui-btn-hover-r {
+	@include button-hover(#c51833);
+}

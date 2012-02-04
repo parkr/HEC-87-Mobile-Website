@@ -17,13 +17,13 @@
 		echo $this->Form->input('show_contact_info');
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit'));?>
-<?php echo $this->Html->link('View Profile', array('controller' => 'users', 'action' => 'view', AuthComponent::user('id')), array('data-role' => 'button', 'data-icon' => 'delete'));  ?>
+<?php echo $this->Form->end(array('label' => __('Submit'), 'data-icon' => 'check', 'data-theme' => 'g'));?>
+<?php echo $this->Html->link('View Profile', array('controller' => 'users', 'action' => 'view', AuthComponent::user('id')), array('data-role' => 'button', 'data-icon' => 'forward'));  ?>
 <?php 
 echo $this->Form->postLink(
 	__('Delete'), 
 	array('action' => 'delete', AuthComponent::user('id')), 
-	array('data-role' => 'button', 'data-icon' => 'delete'),
+	array('data-role' => 'button', 'data-icon' => 'delete', 'data-theme' => 'r'),
 	__('Are you sure you want to delete your account, %s?', $this->Form->value('User.name'))
 ); 
 ?>
