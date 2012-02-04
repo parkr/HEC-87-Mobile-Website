@@ -9,6 +9,7 @@ App::uses('AppController', 'Controller');
 class UsersController extends AppController {
 
 	public $account_types = array('student', 'attendee');
+	public $invite_codes = array('hecstudent', 'hecattendee', 'bod');
 
 	public function beforeFilter() {
 		$this->Auth->autoRedirect = false;
@@ -64,6 +65,19 @@ class UsersController extends AppController {
 		}
 	}
 	public function register() {
+		// Check for invalidity.
+		if($this->Auth->loggedIn()){
+			$this->Session->setFlash('You are already logged in.');
+			$this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
+		}
+		if(isset($this->params->query) && isset($this->params->query['invite']) && in_array($this->params->query['invite'], $this->invite_codes)){
+			
+		}else{
+			$this->Session->setFlash('You must have a valid invite code to be qualified to register.');
+			$this->redirect(array('controller' => 'pages', 'action' => 'home'));
+		}
+		
+		
 		$this->set('params', $this->params->query);
 		$this->set('type', (isset($this->params->query['type']) && $this->params->query['type'] != "" && in_array($this->params->query['type'], $this->account_types)) ? $this->params->query['type'] : "student");
 		if ($this->request->is('post')) {
@@ -89,10 +103,6 @@ class UsersController extends AppController {
 					}
 				}
 			}
-		}else{
-			/*if($this->Auth->user('id') > 0){
-				$this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
-			}*/
 		}
 	}
 	
