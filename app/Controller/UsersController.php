@@ -86,12 +86,11 @@ class UsersController extends AppController {
 					}
 				}
 			}
+		}else{
+			/*if($this->Auth->user('id') > 0){
+				$this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
+			}*/
 		}
-	}
-
-	public function admin_login(){
-		if($this->isAuthorized($this->User->find('first', array('conditions' => array('User.id' => $this->Auth->user('id')))))){ $this->set("good", "YOU'RE GOOD HOMIE"); }
-		else{ $this->redirect(array('action' => 'login', 'admin' => false)); }
 	}
 	
 	/** 
@@ -131,6 +130,11 @@ class UsersController extends AppController {
 		}
 	}
 	
+	public function admin_login(){
+		if($this->isAuthorized($this->User->find('first', array('conditions' => array('User.id' => $this->Auth->user('id')))))){ $this->set("good", "YOU'RE GOOD HOMIE"); }
+		else{ $this->redirect(array('action' => 'login', 'admin' => false)); }
+	}
+
 
 /**
  * admin_index method
