@@ -54,6 +54,7 @@
 			</div><?php endif; ?>
 			<?php echo $content_for_layout; ?>
 			<?php if(AuthComponent::user('id') > 0){ echo "Logged in as ". AuthComponent::user('name') . ". " . $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout')); }else{ echo $this->Html->link('Login', array('controller' => 'users', 'action' => 'login')); } ?>
+			<?php echo $this->element('sql_dump'); ?>
 		</div>
 		<div data-role="footer">
 			<h4>&copy; 2012 Hotel Ezra Cornell. <?php echo $this->Html->link('Contact', array('controller' => 'pages', 'action' => 'contact')); ?>.</h4>
