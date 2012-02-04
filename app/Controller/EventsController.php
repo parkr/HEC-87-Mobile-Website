@@ -27,6 +27,7 @@ class EventsController extends AppController {
 		return array(
 			'conditions' => array( 
 				"AND" => array(
+					array('Event.end_time >' => date("Y-m-d H:i:s")),
 					array('Event.start_time >=' => date("Y-m-d H:i:s", mktime(0, 0, 0, $month, $day, $year))),
 					array('Event.start_time <= ' =>  date("Y-m-d H:i:s", mktime(23, 59, 59, $month, $day, $year)))
 				)
