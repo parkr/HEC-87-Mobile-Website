@@ -14,7 +14,7 @@ class UsersController extends AppController {
 		$this->Auth->autoRedirect = false;
 		parent::beforeFilter();
 		$this->Auth->deny('view'); // Cannot see user profiles unless logged in
-		$this->Auth->allow('register', 'login'); // Letting users register themselves
+		$this->Auth->allow('register', 'login', 'students', 'attendees'); // Letting users register themselves
 	}
 
 
