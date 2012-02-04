@@ -18,6 +18,7 @@
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit'));?>
+<?php echo $this->Html->link('View Profile', array('controller' => 'users', 'action' => 'view', AuthComponent::user('id')), array('data-role' => 'button', 'data-icon' => 'delete'));  ?>
 <?php 
 echo $this->Form->postLink(
 	__('Delete'), 
