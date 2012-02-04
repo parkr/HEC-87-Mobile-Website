@@ -13,18 +13,34 @@
 
 // Customizations
 
-.ui-li .ui-li-divider, .ui-bar-b {
-	$base-colour-for-dividers: #a1988b;
-	@include background(linear-gradient(top, lighten($base-colour-for-dividers, 40%), lighten($base-colour-for-dividers, 10%)));
+.ui-li .ui-li-divider, .ui-bar-c {
+	border: 1px solid #456f9a;
+	background: #5e87b0;
+	color: #fff;
+	font-weight: bold;
+	text-shadow: 0 -1px 1px #254f7a;
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#81a8ce),to(#5e87b0));
+	background-image: -webkit-linear-gradient(#81a8ce,#5e87b0);
+	background-image: -moz-linear-gradient(#81a8ce,#5e87b0);
+	background-image: -ms-linear-gradient(#81a8ce,#5e87b0);
+	background-image: -o-linear-gradient(#81a8ce,#5e87b0);
+	background-image: linear-gradient(#81a8ce,#5e87b0);
+	border-image: initial;
+	//$base-colour-for-dividers: #a1988b;
+	//@include background(linear-gradient(top, lighten($base-colour-for-dividers, 40%), lighten($base-colour-for-dividers, 10%)));
 	//background-color: darken(#d8cfc7, 50%);
 }
 
-.ui-input-search, input.ui-input-text {
+.ui-input-search, input.ui-input-text, textarea.ui-input-text {
 	background: white;
 }
 
 .ui-footer .ui-link {
 	text-shadow: none;
+}
+
+.checkbox {
+	margin-top: 10px;
 }
 
 #speaker_page {

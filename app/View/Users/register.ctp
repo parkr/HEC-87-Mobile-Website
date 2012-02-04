@@ -22,8 +22,8 @@
 		));
 		if($type != "student") { 
 			echo $this->Form->input('company');
-			echo $this->Form->input('position');
 		}
+		echo $this->Form->input('position');
 		echo $this->Form->input('bio');
 		echo $this->Form->input('show_contact_info');
 	?>

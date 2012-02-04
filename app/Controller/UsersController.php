@@ -17,6 +17,10 @@ class UsersController extends AppController {
 		$this->Auth->allow('register', 'login'); // Letting users register themselves
 	}
 
+
+	/** 
+	 * Directory Listings
+	 */
 	public function index(){ $this->set('account_types', $this->account_types); }
 	public function students(){
 		$this->set('title_for_layout', 'Students');
@@ -36,6 +40,9 @@ class UsersController extends AppController {
 		
 	}
 
+	/** 
+	 * Auth Methods
+	 */
 	public function login() {
 		if ($this->request->is('post')) {
 			if ($this->Auth->login()) {
@@ -45,7 +52,6 @@ class UsersController extends AppController {
 			}
 		}
 	}
-
 	public function logout() {
 		$redirect_to = $this->Auth->logout();
 		if($redirect_to){
@@ -56,12 +62,6 @@ class UsersController extends AppController {
 			$this->redirect($redirect_to);
 		}
 	}
-
-/**
- * add method
- *
- * @return void
- */
 	public function register() {
 		$this->set('params', $this->params->query);
 		$this->set('type', (isset($this->params->query['type']) && $this->params->query['type'] != "" && in_array($this->params->query['type'], $this->account_types)) ? $this->params->query['type'] : "student");
@@ -92,19 +92,41 @@ class UsersController extends AppController {
 		if($this->isAuthorized($this->User->find('first', array('conditions' => array('User.id' => $this->Auth->user('id')))))){ $this->set("good", "YOU'RE GOOD HOMIE"); }
 		else{ $this->redirect(array('action' => 'login', 'admin' => false)); }
 	}
-
-/**
- * view method
- *
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
+	
+	/** 
+	 * Profile methods
+	 */
+ 	public function view($id = null) {
+ 		$this->User->id = $id;
+ 		if (!$this->User->exists()) {
+ 			throw new NotFoundException(__('Invalid event'));
+ 		}
+ 		$this->set('user', $this->User->read(null, $id));
+ 	}
+	public function edit($id = null) {
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
-			throw new NotFoundException(__('Invalid event'));
+			throw new NotFoundException(__('Invalid user'));
 		}
-		$this->set('user', $this->User->read(null, $id));
+		if($this->User->id != AuthComponent::user('id')){
+			$this->Session->setFlash(__('You may only edit your own profile.'));
+			$this->redirect(array('action' => 'edit', AuthComponent::user('id')));
+		}
+		if ($this->request->is('post') || $this->request->is('put')) {
+			
+			$fieldList = array('name', 'show_contact_info', 'email', 'phone_number', 'graduation_year', 'company', 'position', 'bio', 'picture');
+			
+			if ($this->User->save($this->request->data, true, $fieldList)) {
+				$this->Session->setFlash(__('Your profile has been saved!'));
+				$this->redirect(array('action' => 'edit', $id));
+			} else {
+				$this->Session->setFlash(__('Your profile could not be saved. Please, try again.'));
+				$this->set('type', $this->request->data['User']['type']);
+			}
+		} else {
+			$this->request->data = $this->User->read(null, $id);
+			$this->set('type', $this->request->data['User']['type']);
+		}
 	}
 	
 

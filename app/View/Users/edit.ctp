@@ -1,30 +1,28 @@
-<div class="users form">
-<?php echo $this->Form->create('User');?>
+<?php echo $this->Form->create('User', array('type' => 'file'));?>
 	<fieldset>
-		<legend><?php echo __('Edit User'); ?></legend>
 	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('role');
-		echo $this->Form->input('name');
-		echo $this->Form->input('password');
-		echo $this->Form->input('show_contact_info');
+		echo $this->Form->input('id', array('type' => 'hidden'));
 		echo $this->Form->input('email');
+		echo $this->Form->input('name');
 		echo $this->Form->input('phone_number');
-		echo $this->Form->input('graduation_year');
-		echo $this->Form->input('company');
+		echo $this->Html->tag('div', 'Ex: 555 123 4567', array('class' => 'details'));
+		echo $this->Form->input('graduation_year', array(
+			'type' => 'text'
+		));
+		if($type != "student") { 
+			echo $this->Form->input('company');
+		}
 		echo $this->Form->input('position');
 		echo $this->Form->input('bio');
-		echo $this->Form->input('picture');
-		echo $this->Form->input('date_created');
+		echo $this->Form->input('show_contact_info');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit'));?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('User.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('User.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index'));?></li>
-	</ul>
-</div>
+<?php 
+echo $this->Form->postLink(
+	__('Delete'), 
+	array('action' => 'delete', AuthComponent::user('id')), 
+	array('data-role' => 'button', 'data-icon' => 'delete'),
+	__('Are you sure you want to delete your account, %s?', $this->Form->value('User.name'))
+); 
+?>
