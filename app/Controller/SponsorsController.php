@@ -6,6 +6,8 @@ App::uses('AppController', 'Controller');
  * @property Sponsor $Sponsor
  */
 class SponsorsController extends AppController {
+	public $runningPageTitle = "Sponsors";
+	
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allow('view');
@@ -17,6 +19,7 @@ class SponsorsController extends AppController {
  * @return void
  */
 	public function index() {
+		$this->set('title_for_layout', $this->runningPageTitle);
 		$this->set('sponsors', $this->Sponsor->find('all', array('order' => 'Sponsor.name ASC')));
 	}
 
@@ -31,7 +34,9 @@ class SponsorsController extends AppController {
 		if (!$this->Sponsor->exists()) {
 			throw new NotFoundException(__('Invalid sponsor'));
 		}
-		$this->set('sponsor', $this->Sponsor->read(null, $id));
+		$sponsor = $this->Sponsor->read(null, $id);
+		$this->set('sponsor', $sponsor);
+		$this->set('title_for_layout', $sponsor['Sponsor']['name'] . $this->runningPageTitle);
 	}
 
 /**

@@ -35,6 +35,8 @@ class MenusController extends AppController {
 		if (!$this->Menu->exists()) {
 			throw new NotFoundException(__('Invalid menu'));
 		}
-		$this->set('menu', $this->Menu->read(null, $id));
+		$menu = $this->Menu->read(null, $id);
+		$this->set('menu', $menu);
+		$this->set('title_for_layout', $menu['Menu']['name']." &mdash; Menus");
 	}
 }

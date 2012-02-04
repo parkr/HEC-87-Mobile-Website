@@ -28,4 +28,16 @@ class Speaker extends AppModel {
 			),
 		),
 	);
+	
+	public function formattedName($speaker = null){
+		if($speaker == null){
+			if($this->id > 0){
+				$speaker = $this->read(null, $this->id);
+			}else{
+				return "Cannot retrieve; User ID not set.";
+			}
+		}
+		return $speaker['Speaker']['first_name']. " " .$speaker['Speaker']['last_name'];
+	}
+	
 }

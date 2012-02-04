@@ -29,9 +29,12 @@ class SpeakersController extends AppController {
 	public function view($id = null) {
 		$this->Speaker->id = $id;
 		if (!$this->Speaker->exists()) {
-			throw new NotFoundException(__('Invalid speaker'));
+			throw new NotFoundException(__('Speaker not found.'));
 		}
-		$this->set('speaker', $this->Speaker->read(null, $id));
+		$speaker = $this->Speaker->read(null, $id);
+		$speaker['Speaker']['name'] = $this->Speaker->formattedName($speaker);
+		$this->set('speaker', $speaker);
+		$this->set('title_for_layout', $speaker['Speaker']['name']." &mdash; Speakers");
 	}
 
 /**

@@ -47,6 +47,8 @@ class EventsController extends AppController {
 		if (!$this->Event->exists()) {
 			throw new NotFoundException(__('Invalid event'));
 		}
-		$this->set('event', $this->Event->read(null, $id));
+		$event = $this->Event->read(null, $id);
+		$this->set('event', $event);
+		$this->set('title_for_layout', $event['Event']['name']." &mdash; Events");
 	}
 }
