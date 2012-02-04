@@ -76,6 +76,9 @@ class UsersController extends AppController {
 				}else{
 					$this->request->data['User']['role'] = "user";
 					$this->request->data['User']['date_created'] = date("Y-m-d H:i:s");
+					if($this->request->data['User']['type'] == 'student'){
+						$this->request->data['User']['company'] = "Hotel Ezra Cornell 87";
+					}
 					if ($this->User->save($this->request->data)) {
 						$id = $this->User->id;
 						$this->request->data['User'] = array_merge($this->request->data["User"], array('id' => $id));
