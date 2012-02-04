@@ -954,3 +954,14 @@ dl dd {
   background-image: -ms-linear-gradient(#eb586f, #dc1b39);
   background-image: -o-linear-gradient(#eb586f, #dc1b39);
   background-image: linear-gradient(#eb586f, #dc1b39); }
+
+/* line 148, ../../Assets/Sass/application.scss */
+#branding {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  width: 100%; }
+  /* line 154, ../../Assets/Sass/application.scss */
+  #branding #logo {
+    max-width: 100%; }

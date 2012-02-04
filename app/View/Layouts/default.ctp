@@ -28,8 +28,17 @@
 <body>
 	<div data-role="page" data-theme="a">
 		<div id="branding">
-		    <h1>The Hotel Ezra Cornell</h1>
-		    <p>Showcasing Hospitality Education Through Student Leadership</p>
+		    <!--<h1>The Hotel Ezra Cornell</h1>
+		    <p>Showcasing Hospitality Education Through Student Leadership</p>-->
+			<?php 
+				echo $this->Html->image(
+						'the_hec_logo.png',
+						array(
+							'alt' => "The Hotel Ezra Cornell",
+							'id' => 'logo'
+						)
+				); 
+			?>
 		</div>
 		<div data-role="header">
 			<?php 
@@ -54,7 +63,7 @@
 			</div><?php endif; ?>
 			<?php echo $content_for_layout; ?>
 			<?php if(AuthComponent::user('id') > 0){ echo "Logged in as ". AuthComponent::user('name') . ". " . $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout')); }else{ echo $this->Html->link('Login', array('controller' => 'users', 'action' => 'login')); } ?>
-			<?php echo $this->element('sql_dump'); ?>
+			<?php $this->element('sql_dump'); ?>
 		</div>
 		<div data-role="footer">
 			<h4>&copy; 2012 Hotel Ezra Cornell. <?php echo $this->Html->link('Contact', array('controller' => 'pages', 'action' => 'contact')); ?>.</h4>

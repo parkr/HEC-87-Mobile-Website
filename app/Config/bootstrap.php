@@ -68,7 +68,11 @@ function full_url(){
 	if($_SERVER['SERVER_NAME'] === "localhost"){
 		return "http://localhost/HEC/Mobile-New";
 	}else{
-		return "http://www.mobile.hotelezracornell.com/New";
+		if($_SERVER['SERVER_NAME'] === "hec.parkermoore.de"){
+			return "http://hec.parkermoore.de";
+		}else{
+			return "http://www.mobile.hotelezracornell.com/New";
+		}
 	}
 }
 

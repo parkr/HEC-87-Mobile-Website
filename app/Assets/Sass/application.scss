@@ -144,3 +144,14 @@ dl {
 .ui-btn-hover-r {
 	@include button-hover(#c51833);
 }
+
+#branding{
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	background-color: white;
+	width: 100%;
+	#logo {
+		max-width: 100%;
+	}
+}
