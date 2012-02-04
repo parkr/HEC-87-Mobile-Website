@@ -77,7 +77,7 @@ class UsersController extends AppController {
 					$this->request->data['User']['role'] = "user";
 					$this->request->data['User']['date_created'] = date("Y-m-d H:i:s");
 					if($this->request->data['User']['type'] == 'student'){
-						$this->request->data['User']['company'] = "Hotel Ezra Cornell 87";
+						$this->request->data['User']['company'] = "Hotel Ezra Cornell ".$this->_currentHECYear();
 					}
 					if ($this->User->save($this->request->data)) {
 						$id = $this->User->id;
@@ -93,6 +93,17 @@ class UsersController extends AppController {
 			/*if($this->Auth->user('id') > 0){
 				$this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
 			}*/
+		}
+	}
+	
+	private function _currentHECYear(){
+		$base_year = 2012;
+		$base_hec_year = 87;
+		if( ((int) date("m")) > 6 ){
+			// It's June. We're thinking about next year.
+			return $base_year - 1924;
+		}else{
+			return $base_year - 1925;
 		}
 	}
 	
