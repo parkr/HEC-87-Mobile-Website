@@ -40,3 +40,10 @@
 		&nbsp;
 	</dd>
 </dl>
+<?php
+
+if($user['User']['id'] == AuthComponent::user('id')){
+	echo $this->Html->link('Edit Profile', array('controller' => 'users', 'action' => 'edit', $user['User']['id']), array('data-role' => 'button'));
+}
+	
+?>
