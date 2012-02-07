@@ -1,6 +1,7 @@
 <?php
 App::uses('AppModel', 'Model');
 App::uses('AuthComponent', 'Controller/Component');
+App::uses('CakeEmail', 'Network/Email');
 /**
  * User Model
  *
@@ -9,6 +10,7 @@ class User extends AppModel {
 	
 	public $name = 'User';
 	public $displayField = 'name';
+	public $hasMany = 'Hash';
 	
 	public function beforeSave() {
 		if (isset($this->data[$this->alias]['password'])) {

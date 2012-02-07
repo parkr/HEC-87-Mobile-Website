@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::import('Helper', 'Html');
 /**
  * Users Controller
  *
@@ -20,7 +21,7 @@ class UsersController extends AppController {
 		$this->Auth->autoRedirect = false;
 		parent::beforeFilter();
 		$this->Auth->deny('view'); // Cannot see user profiles unless logged in
-		$this->Auth->allow('register', 'login', 'students', 'attendees'); // Letting users register themselves
+		$this->Auth->allow('register', 'login', 'forgot', 'reset', 'students', 'attendees'); // Letting users register themselves
 	}
 	
 	public function isAuthorized($user) {
@@ -74,6 +75,50 @@ class UsersController extends AppController {
 				$this->Session->setFlash(__('Username or password is incorrect or you are not a registered user.'), 'default', array(), 'auth');
 			}
 		}
+	}
+	public function forgot() {
+		$this->set('title_for_layout', 'Forgot Password?');
+		$this->set('prevpage_for_layout', array('title' => "Login", 'routing' => array('action' => 'login')));
+		if($this->request->is('post')){
+			// Store hash
+			$this->User->Hash->create();
+			$user = $this->User->findByEmail($this->request->data['User']['email']);
+			$hash = array(
+				'Hash' => array(
+					'user_id' => $user['User']['id'],
+					'hash' => $this->User->Hash->generateNew($user['User']['email']),
+					'expires' => date('Y-m-d H:i:s', mktime(date("H"), date("i"), date("s"), date("n"), (date("j")+14), date("Y")))." EST" // 14 days to use.
+				)
+			);
+			if($this->User->Hash->save($hash)){
+				// Send email
+				$email = new CakeEmail();
+				$email->from(array('noreply@hotelezracornell.com' => 'Hotel Ezra Cornell IT'));
+				$email->to($user['User']['email']);
+				$email->subject('Reset your password');
+				$email->send("Hello,\n\nYou just requested to reset your password. You may do so here: ".$this->User->Hash->getLink($hash, $user['User']['email'])."\n\nSincerely,\nIT Manager\nHotel Ezra Cornell");
+				$this->Session->setFlash('Your request has been processed. Please check your email.');
+				$this->redirect(array('action' => 'forgot'));
+			}else{
+				$this->Session->setFlash('Something went wrong with your request. Please try again.');
+			}
+		}
+	}
+	public function reset($email, $hash_code) {
+		$user = $this->User->findByEmail($email);
+		$hash = $this->User->Hash->findByHash($hash_code);
+		//if($user['User']['id'] == $hash['Hash']['user_id'] && !$this->User->Hash->hasExpired($hash)){
+			//
+			//}
+		// TODO: Check hash
+		$this->set('title_for_layout', 'Forgot Password?');
+		$this->set('prevpage_for_layout', array('title' => "Login", 'routing' => array('action' => 'login')));
+		if($this->request->is('post')){
+			// Hash password
+			// Set new password
+			// Login
+		}
+		
 	}
 	public function logout() {
 		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
