@@ -810,18 +810,6 @@ a.ui-link-inherit {
 .ui-mobile-nosupport-boxshadow .ui-focus {
   outline-width: 2px; }
 
-/* line 1, ../../Assets/Sass/pages/_menus.scss */
-#menus {
-  text-align: center; }
-  /* line 4, ../../Assets/Sass/pages/_menus.scss */
-  #menus dl.menu dt {
-    font-size: 1.3em;
-    padding: 10px; }
-  /* line 8, ../../Assets/Sass/pages/_menus.scss */
-  #menus dl.menu dd {
-    font-size: 1.2em;
-    margin-left: 0; }
-
 /* line 16, ../../Assets/Sass/application.scss */
 .ui-li .ui-li-divider, .ui-bar-c {
   border: 1px solid #456f9a;
@@ -865,16 +853,23 @@ a.ui-link-inherit {
     text-align: left;
     text-indent: 40px; }
 
-/* line 68, ../../Assets/Sass/application.scss */
-dl dt {
-  margin: 35px 0 15px 0;
-  background-color: #eceadd;
-  font-weight: normal; }
-/* line 73, ../../Assets/Sass/application.scss */
-dl dd {
-  margin-bottom: 10px; }
+/* line 67, ../../Assets/Sass/application.scss */
+dl {
+  text-align: center; }
+  /* line 69, ../../Assets/Sass/application.scss */
+  dl dt {
+    font-size: 1.3em;
+    padding: 10px;
+    margin: 35px 0 15px 0;
+    background-color: #eceadd;
+    font-weight: normal; }
+  /* line 76, ../../Assets/Sass/application.scss */
+  dl dd {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    margin-left: 0; }
 
-/* line 78, ../../Assets/Sass/application.scss */
+/* line 83, ../../Assets/Sass/application.scss */
 .error-message {
   padding: 10px;
   border: #cc0000 2px solid;
@@ -882,7 +877,7 @@ dl dd {
   color: #f6f6f6;
   text-shadow: none; }
 
-/* line 86, ../../Assets/Sass/application.scss */
+/* line 91, ../../Assets/Sass/application.scss */
 .message {
   padding: 10px;
   border: #fccc17 2px solid;
@@ -890,12 +885,12 @@ dl dd {
   color: #716f73;
   text-shadow: none; }
 
-/* line 94, ../../Assets/Sass/application.scss */
+/* line 99, ../../Assets/Sass/application.scss */
 .details {
   color: #a1988b;
   padding: 5px 0px; }
 
-/* line 134, ../../Assets/Sass/application.scss */
+/* line 139, ../../Assets/Sass/application.scss */
 .ui-btn-up-g {
   text-decoration: none;
   border: 1px solid #559240;
@@ -910,7 +905,7 @@ dl dd {
   background-image: -o-linear-gradient(#89c375, #6bb352);
   background-image: linear-gradient(#89c375, #6bb352); }
 
-/* line 137, ../../Assets/Sass/application.scss */
+/* line 142, ../../Assets/Sass/application.scss */
 .ui-btn-hover-g {
   text-decoration: none;
   border: 1px solid #406e31;
@@ -925,7 +920,7 @@ dl dd {
   background-image: -o-linear-gradient(#a8d299, #7abb64);
   background-image: linear-gradient(#a8d299, #7abb64); }
 
-/* line 141, ../../Assets/Sass/application.scss */
+/* line 146, ../../Assets/Sass/application.scss */
 .ui-btn-up-r {
   text-decoration: none;
   border: 1px solid #981227;
@@ -940,7 +935,7 @@ dl dd {
   background-image: -o-linear-gradient(#e52b48, #c51833);
   background-image: linear-gradient(#e52b48, #c51833); }
 
-/* line 144, ../../Assets/Sass/application.scss */
+/* line 149, ../../Assets/Sass/application.scss */
 .ui-btn-hover-r {
   text-decoration: none;
   border: 1px solid #6a0d1b;
@@ -955,13 +950,13 @@ dl dd {
   background-image: -o-linear-gradient(#eb586f, #dc1b39);
   background-image: linear-gradient(#eb586f, #dc1b39); }
 
-/* line 148, ../../Assets/Sass/application.scss */
+/* line 153, ../../Assets/Sass/application.scss */
 #branding {
   text-align: center;
   padding: 0;
   margin: 0;
   background-color: white;
   width: 100%; }
-  /* line 154, ../../Assets/Sass/application.scss */
+  /* line 159, ../../Assets/Sass/application.scss */
   #branding #logo {
     max-width: 100%; }

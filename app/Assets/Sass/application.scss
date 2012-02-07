@@ -65,13 +65,18 @@
 }
 
 dl {
+	text-align: center;
 	dt {
+		font-size: 1.3em;
+		padding: 10px;
 		margin: 35px 0 15px 0;
 		background-color: darken(#f0eee4, 2%);
 		font-weight: normal;
 	}
 	dd {
 		margin-bottom: 10px;
+		font-size: 1.2em;
+		margin-left: 0;
 	}
 }
 
