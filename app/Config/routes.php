@@ -31,7 +31,6 @@
  * Single Pages
  */
 	Router::connect('/updates', array('controller' => 'pages', 'action' => 'updates'));
-	Router::connect('/feedback', array('controller' => 'pages', 'action' => 'feedback'));
 	Router::connect('/login', array('controller' => 'users', 'action' => 'login'));
 	Router::connect('/logout', array('controller' => 'users', 'action' => 'logout'));
 	Router::connect('/register', array('controller' => 'users', 'action' => 'register'));
@@ -47,6 +46,9 @@
 	Router::connect('/program', array('controller' => 'events'));
 	Router::connect('/program/:action', array('controller' => 'events'));
 	Router::connect('/program/:action/*', array('controller' => 'events'));
+	Router::connect('/feedback', array('controller' => 'thoughts'));
+	Router::connect('/feedback/:action', array('controller' => 'thoughts'));
+	Router::connect('/feedback/:action/*', array('controller' => 'thoughts'));
 	
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 
