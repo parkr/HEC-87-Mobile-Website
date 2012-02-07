@@ -85,7 +85,7 @@ class User extends AppModel {
 		'phone_number' => array(
 			'phone' => array(
 				'rule' => array('phone'),
-				'message' => 'Your phone number must contain only numbers.',
+				'message' => 'You have not entered a valid phone number.',
 				'allowEmpty' => true,
 				'required' => false,
 				//'last' => false, // Stop validation after this rule
