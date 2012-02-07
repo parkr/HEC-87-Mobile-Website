@@ -11,6 +11,9 @@ class Speaker extends AppModel {
  * @var string
  */
 	public $displayField = 'name';
+	public $virtualFields = array(
+	    'name' => 'CONCAT(Speaker.first_name, " ", Speaker.last_name)'
+	);
 /**
  * Validation rules
  *
