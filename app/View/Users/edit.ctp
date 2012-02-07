@@ -14,7 +14,10 @@
 		}
 		echo $this->Form->input('position');
 		echo $this->Form->input('bio');
-		echo $this->Form->input('show_contact_info');
+		echo $this->Form->input('show_contact_info', array(
+			'label' => 'Show Phone # and Email'
+		));
+		echo $this->Html->tag('div', 'If you enable this, your phone number and email address will be available to HEC-affiliated students and attendees when they are logged in.', array('class' => 'details'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(array('label' => __('Submit'), 'data-icon' => 'check', 'data-theme' => 'g'));?>
