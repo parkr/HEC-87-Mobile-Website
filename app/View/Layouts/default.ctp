@@ -53,7 +53,7 @@
 				);
 			endif;
 			?>
-			<a href="<?php echo full_url(); ?>" data-icon="home" data-direction="reverse" data-iconpos="notext" class="ui-btn-right">Home</a>
+			<a href="<?php echo $this->Html->url('/'); ?>" data-icon="home" data-direction="reverse" data-iconpos="notext" class="ui-btn-right">Home</a>
 		    <h1><?php echo $title_for_layout; ?></h1>
 		</div>
 		<div data-role="content" id="<?php echo $this->params['controller'] ?>">
