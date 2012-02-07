@@ -63,7 +63,14 @@
 			</div><?php endif; ?>
 			<?php echo $content_for_layout; ?>
 			<div id="user_status">
-				<?php if(AuthComponent::user('id') > 0){ echo "Logged in as ". AuthComponent::user('name') . ". " . $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout')); }else{ echo $this->Html->link('Login', array('controller' => 'users', 'action' => 'login')); } ?>
+				<?php 
+					if(AuthComponent::user('id') > 0){ 
+						echo "Logged in as ". AuthComponent::user('name') . ". " . 
+							$this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout')); 
+					}else{ 
+						echo $this->Html->link('Login', array('controller' => 'users', 'action' => 'login')); 
+					} 
+				?>
 			</div>
 			<?php $this->element('sql_dump'); ?>
 		</div>
