@@ -6,6 +6,9 @@ App::uses('AppController', 'Controller');
  * @property Menu $Menu
  */
 class MenusController extends AppController {
+	
+	public $alias = "F&B";
+	
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allow('view');
@@ -22,6 +25,8 @@ class MenusController extends AppController {
 		);
 		$this->Menu->recursive = 1;
 		$this->set('menus', $this->Menu->find('all', $params));
+		$this->set('title_for_layout', $this->alias);
+		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
 	}
 
 /**
@@ -37,6 +42,7 @@ class MenusController extends AppController {
 		}
 		$menu = $this->Menu->read(null, $id);
 		$this->set('menu', $menu);
-		$this->set('title_for_layout', $menu['Menu']['name']." &mdash; Menus");
+		$this->set('title_for_layout', $menu['Menu']['name']);
+		$this->set('prevpage_for_layout', array('title' => $this->alias, 'routing' => array('controller' => $this->params['controller'], 'action' => 'index')));
 	}
 }

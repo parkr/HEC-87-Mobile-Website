@@ -19,6 +19,7 @@ class PagesController extends AppController {
 	}
 	public function updates(){
 		$this->set("title_for_layout", "Updates");
+		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
 		
 		App::import('Utility', 'Xml');
 		$parsed_xml =& Xml::build($this->rss_feed_url);
@@ -27,11 +28,14 @@ class PagesController extends AppController {
 	}
 	public function faqs(){
 		$this->set("title_for_layout", "FAQs");
+		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
 	}
 	public function feedback(){
 		$this->set("title_for_layout", "Feedback");
+		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
 	}
 	public function contact(){
 		$this->set("title_for_layout", "Contact");
+		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
 	}
 }

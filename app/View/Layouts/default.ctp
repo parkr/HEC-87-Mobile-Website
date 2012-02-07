@@ -42,10 +42,10 @@
 		</div>
 		<div data-role="header">
 			<?php 
-			if($this->request->params["action"] != "index" && $this->request->params["action"] != "home" && $this->request->params["controller"] != "pages"):
+			if(isset($prevpage_for_layout)):
 				echo $this->Html->link(
-						human($this->request->params["controller"]), 
-						array('controller' => $this->request->params["controller"], 'action' => 'index'), 
+						human($prevpage_for_layout['title']), 
+						$prevpage_for_layout['routing'], 
 						array(
 							"data-icon" => "arrow-l",
 							"data-direction" => "reverse"

@@ -18,6 +18,7 @@ class EventsController extends AppController {
  * @return void
  */
 	public function index() {
+		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
 		$this->set('thursday', $this->Event->find('all', $this->_getIndexCondsOnDate(2012, 04, 12)));
 		$this->set('friday', $this->Event->find('all', $this->_getIndexCondsOnDate(2012, 04, 13)));
 		$this->set('saturday', $this->Event->find('all', $this->_getIndexCondsOnDate(2012, 04, 14)));
@@ -49,6 +50,7 @@ class EventsController extends AppController {
 		}
 		$event = $this->Event->read(null, $id);
 		$this->set('event', $event);
-		$this->set('title_for_layout', $event['Event']['name']." &mdash; Events");
+		$this->set('title_for_layout', $event['Event']['name']);
+		$this->set('prevpage_for_layout', array('title' => ucwords($this->params['controller']), 'routing' => array('controller' => $this->params['controller'], 'action' => 'index')));
 	}
 }

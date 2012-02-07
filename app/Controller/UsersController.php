@@ -9,8 +9,9 @@ App::uses('AppController', 'Controller');
 class UsersController extends AppController {
 
 	public $account_types = array('student', 'attendee');
+	public $account_types_plural = array('students', 'attendees');
 	public $invite_codes = array('hecstudent', 'hecattendee', 'bod');
-	public $runningPageTitle = "Profiles";
+	public $alias = "Profiles";
 
 	public function beforeFilter() {
 		$this->Auth->autoRedirect = false;
@@ -33,7 +34,11 @@ class UsersController extends AppController {
 	/** 
 	 * Directory Listings
 	 */
-	public function index(){ $this->set('account_types', $this->account_types); $this->set('title_for_layout', $this->runningPageTitle); }
+	public function index(){ 
+		$this->set('account_types', $this->account_types_plural); 
+		$this->set('title_for_layout', $this->alias); 
+		$this->set('prevpage_for_layout', array('title' => 'Home', 'routing' => '/')); 
+	}
 	public function students(){
 		$this->set('title_for_layout', 'Students');
 		$params = array(
@@ -41,6 +46,7 @@ class UsersController extends AppController {
 			'order' => array('User.name ASC')
 		);
 		$this->set('people', $this->User->find('all', $params));
+		$this->set('prevpage_for_layout', array('title' => $this->alias, 'routing' => array('controller' => $this->params['controller'], 'action' => 'index')));
 	}
 	public function attendees(){
 		$this->set('title_for_layout', 'Attendees');
@@ -49,7 +55,7 @@ class UsersController extends AppController {
 			'order' => array('User.name ASC')
 		);
 		$this->set('people', $this->User->find('all', $params));
-		
+		$this->set('prevpage_for_layout', array('title' => $this->alias, 'routing' => array('controller' => $this->params['controller'], 'action' => 'index')));
 	}
 
 	/** 
@@ -57,6 +63,7 @@ class UsersController extends AppController {
 	 */
 	public function login() {
 		$this->set('title_for_layout', 'Login');
+		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
 		if ($this->request->is('post')) {
 			if ($this->Auth->login()) {
 				return $this->redirect($this->Auth->redirect());
@@ -66,6 +73,7 @@ class UsersController extends AppController {
 		}
 	}
 	public function logout() {
+		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
 		$redirect_to = $this->Auth->logout();
 		if($redirect_to){
 			$this->Session->setFlash('You have been successfully logged out.');
@@ -77,6 +85,7 @@ class UsersController extends AppController {
 	}
 	public function register() {
 		$this->set('title_for_layout', 'Register');
+		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
 		
 		// Check for invalidity.
 		if($this->Auth->loggedIn()){
@@ -137,9 +146,11 @@ class UsersController extends AppController {
 		$user = $this->User->read(null, $id);
  		$this->set('user', $user);
 		$this->set('title_for_layout', $user['User']['name']. "'s Profile");
+		$this->set('prevpage_for_layout', array('title' => ucwords(Inflector::pluralize($user['User']['type'])), 'routing' => array('controller' => $this->params['controller'], 'action' => Inflector::pluralize($user['User']['type']))));
  	}
 	public function edit($id = null) {
 		$this->set('title_for_layout', 'Edit Profile');
+		$this->set('prevpage_for_layout', array('title' => 'My Profile', 'routing' => array('controller' => $this->params['controller'], 'action' => 'view', AuthComponent::user('id'))));
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));

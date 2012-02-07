@@ -17,6 +17,7 @@ class SpeakersController extends AppController {
  * @return void
  */
 	public function index() {
+		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
 		$this->set('speakers', $this->Speaker->find('all', array('order' => 'Speaker.last_name')));
 	}
 
@@ -34,7 +35,8 @@ class SpeakersController extends AppController {
 		$speaker = $this->Speaker->read(null, $id);
 		$speaker['Speaker']['name'] = $this->Speaker->formattedName($speaker);
 		$this->set('speaker', $speaker);
-		$this->set('title_for_layout', $speaker['Speaker']['name']." &mdash; Speakers");
+		$this->set('title_for_layout', $speaker['Speaker']['name']);
+		$this->set('prevpage_for_layout', array('title' => ucwords($this->params['controller']), 'routing' => array('controller' => $this->params['controller'], 'action' => 'index')));
 	}
 
 /**
