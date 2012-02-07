@@ -135,7 +135,7 @@ class UsersController extends AppController {
 		}
 	}
 	
-	/** 
+	/***************************************** 
 	 * Profile methods
 	 */
  	public function view($id = null) {
@@ -176,9 +176,20 @@ class UsersController extends AppController {
 		}
 	}
 	
-	public function admin_login(){
-		if($this->isAuthorized($this->User->find('first', array('conditions' => array('User.id' => $this->Auth->user('id')))))){ $this->set("good", "YOU'RE GOOD HOMIE"); }
-		else{ $this->redirect(array('action' => 'login', 'admin' => false)); }
+ 	public function delete($id = null) {
+ 		$this->User->id = $id;
+ 		if (!$this->User->exists()) {
+ 			throw new NotFoundException(__('Invalid event'));
+ 		}
+		if ($this->request->is('post')) {
+			$this->requestAction('/logout', array('return'));
+			if($this->User->delete($id)){
+				$this->Session->setFlash('Your account has been successfully deleted.');
+			}else{
+				$this->Session->setFlash('Your account could not be deleted.');
+			}
+		}
+		$this->redirect('/');
 	}
 
 }
