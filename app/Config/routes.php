@@ -39,9 +39,9 @@
 /**
  * Route new names / aliases to controllers.
  */
- 	Router::connect('/directory', array('controller' => 'users'));
-	Router::connect('/directory/:action', array('controller' => 'users'));
-	Router::connect('/directory/:action/*', array('controller' => 'users'));
+ 	Router::connect('/profiles', array('controller' => 'users'));
+	Router::connect('/profiles/:action', array('controller' => 'users'));
+	Router::connect('/profiles/:action/*', array('controller' => 'users'));
 	//Router::connect('/f-b', array('controller' => 'menus'));
 	Router::connect('/program', array('controller' => 'events'));
 	

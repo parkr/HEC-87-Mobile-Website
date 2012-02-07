@@ -3,7 +3,7 @@ $links = array(
 	$this->Html->link('Program', array('controller' => 'events'), array('data-prefetch' => 'true')),
 	$this->Html->link('Speakers', '/speakers', array('data-prefetch' => 'true')),
 	$this->Html->link('Menus', array('controller' => 'menus'), array('data-prefetch' => 'true')),
-	$this->Html->link('Directory', array('controller' => 'users'), array('data-prefetch' => 'true')),
+	$this->Html->link('Profiles', array('controller' => 'users'), array('data-prefetch' => 'true')),
 	$this->Html->link('Updates', array('controller' => 'pages', 'action' => 'updates'), array('data-prefetch' => 'true')),
 	$this->Html->link('Maps', array('controller' => 'maps'), array('data-prefetch' => 'true')),
 	$this->Html->link('Sponsors', array('controller' => 'sponsors'), array('data-prefetch' => 'true')),

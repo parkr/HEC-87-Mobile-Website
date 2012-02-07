@@ -10,7 +10,7 @@ class UsersController extends AppController {
 
 	public $account_types = array('student', 'attendee');
 	public $invite_codes = array('hecstudent', 'hecattendee', 'bod');
-	public $runningPageTitle = "Directory";
+	public $runningPageTitle = "Profiles";
 
 	public function beforeFilter() {
 		$this->Auth->autoRedirect = false;
@@ -35,7 +35,7 @@ class UsersController extends AppController {
 	 */
 	public function index(){ $this->set('account_types', $this->account_types); $this->set('title_for_layout', $this->runningPageTitle); }
 	public function students(){
-		$this->set('title_for_layout', 'Students &mdash; '.$this->runningPageTitle);
+		$this->set('title_for_layout', 'Students');
 		$params = array(
 			'conditions' => array('User.type' => 'student'),
 			'order' => array('User.name ASC')
@@ -43,7 +43,7 @@ class UsersController extends AppController {
 		$this->set('people', $this->User->find('all', $params));
 	}
 	public function attendees(){
-		$this->set('title_for_layout', 'Attendees &mdash; '.$this->runningPageTitle);
+		$this->set('title_for_layout', 'Attendees');
 		$params = array(
 			'conditions' => array('User.type' => 'attendee'),
 			'order' => array('User.name ASC')
