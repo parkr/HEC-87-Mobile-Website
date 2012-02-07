@@ -12,7 +12,7 @@
 	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script> 
 	<?php echo $this->Html->script("application"); ?>
 	<?php echo $scripts_for_layout; ?>
-	<script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
 		_gaq.push(['_setAccount', 'UA-22375846-2']);
