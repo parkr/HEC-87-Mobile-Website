@@ -42,8 +42,11 @@
  	Router::connect('/profiles', array('controller' => 'users'));
 	Router::connect('/profiles/:action', array('controller' => 'users'));
 	Router::connect('/profiles/:action/*', array('controller' => 'users'));
-	//Router::connect('/f-b', array('controller' => 'menus'));
+	Router::connect('/f-b', array('controller' => 'menus'));
+	Router::connect('/f-b/:action/*', array('controller' => 'menus'));
 	Router::connect('/program', array('controller' => 'events'));
+	Router::connect('/program/:action', array('controller' => 'events'));
+	Router::connect('/program/:action/*', array('controller' => 'events'));
 	
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 
