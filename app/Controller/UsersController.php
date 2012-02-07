@@ -182,7 +182,7 @@ class UsersController extends AppController {
  			throw new NotFoundException(__('Invalid event'));
  		}
 		if ($this->request->is('post')) {
-			$this->requestAction('/logout', array('return'));
+			$this->Auth->logout();
 			if($this->User->delete($id)){
 				$this->Session->setFlash('Your account has been successfully deleted.');
 			}else{
