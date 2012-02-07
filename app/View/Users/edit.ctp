@@ -14,6 +14,17 @@
 		}
 		echo $this->Form->input('position');
 		echo $this->Form->input('bio');
+		
+		echo '<div class="form_photo">';
+		if($this->Form->data['User']['photo'] != ""){
+			echo $this->Html->image($this->Form->data['User']['photo'], array('alt' => $this->Form->data['User']['name'], 'class' => 'photo'));
+		}else{
+			$this->Html->tag('div', 'No photo chosen.', array('class' => 'details'));
+		}
+		echo $this->Form->input('photo', array('type' => 'hidden'));
+		echo $this->Form->input('picture', array('type' => 'file'));
+		echo '</div>';
+		
 		echo $this->Form->input('show_contact_info', array(
 			'label' => 'Show Phone # and Email'
 		));

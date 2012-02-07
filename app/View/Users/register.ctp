@@ -25,6 +25,11 @@
 		}
 		echo $this->Form->input('position');
 		echo $this->Form->input('bio');
+		
+		echo '<div class="form_photo">';
+		echo $this->Form->input('picture', array('type' => 'file'));
+		echo '</div>';
+		
 		echo $this->Form->input('show_contact_info', array(
 			'label' => 'Show Phone # and Email'
 		));

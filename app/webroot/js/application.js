@@ -1,7 +1,7 @@
 $(document).live('pageinit', function(event) {
 	$.mobile.ajaxLinksEnabled = false;
     $.extend($.mobile, {
-		//ajaxEnabled: false,
+		ajaxEnabled: false,
 		ajaxLinksEnabled: false,
 		ajaxFormsEnabled: false
 	});

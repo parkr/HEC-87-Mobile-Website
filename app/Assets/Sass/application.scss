@@ -43,7 +43,7 @@
 	margin-top: 10px;
 }
 
-#speaker_page {
+#speaker_page, #profile {
 	text-align: center;
 	p#bio, p.bio {
 		text-align: left;
@@ -159,4 +159,11 @@ dl {
 	#logo {
 		max-width: 100%;
 	}
+}
+
+.form_photo {
+	margin: 10px 0px;
+}
+.photo {
+	max-width: 200px;
 }

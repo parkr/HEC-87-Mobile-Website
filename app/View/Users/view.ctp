@@ -1,4 +1,23 @@
-<h2><?php  echo h($user['User']['name']);?></h2>
+<div id="profile">
+<h2>
+<?php
+	echo h($user['User']['name']);
+	echo ($user['User']['graduation_year']) ? " '".date('y', mktime(0, 0, 0, 5, 27, $user['User']['graduation_year'])) : "";
+?>
+</h2>
+<h4>
+	<?php
+		echo '<em>';
+		echo ($user['User']['position'] != "") ? h($user['User']['position']).", " : "";
+		echo ($user['User']['company'] != "") ? h($user['User']['company']) : "";
+		echo '</em>';
+	?>
+</h4>
+<?php
+	if($user['User']['photo'] != ""){
+		echo $this->Html->image($user['User']['photo'], array('alt' => $user['User']['name'], 'class' => 'photo'));
+	}
+?>
 <dl>
 	<?php if($user['User']['show_contact_info']): ?>
 	<dt><?php echo __('Email'); ?></dt>
@@ -12,23 +31,6 @@
 		&nbsp;
 	</dd>
 	<?php endif; ?>
-	<?php if($user['User']['graduation_year']): ?>
-	<dt><?php echo __('Graduation Year'); ?></dt>
-	<dd>
-		<?php echo h($user['User']['graduation_year']); ?>
-		&nbsp;
-	</dd>
-	<?php endif; ?>
-	<dt><?php echo __('Company'); ?></dt>
-	<dd>
-		<?php echo h($user['User']['company']); ?>
-		&nbsp;
-	</dd>
-	<dt><?php echo __('Position'); ?></dt>
-	<dd>
-		<?php echo h($user['User']['position']); ?>
-		&nbsp;
-	</dd>
 	<dt><?php echo __('Bio'); ?></dt>
 	<dd>
 		<?php echo h($user['User']['bio']); ?>
@@ -47,3 +49,4 @@ if($user['User']['id'] == AuthComponent::user('id')){
 }
 	
 ?>
+</div>

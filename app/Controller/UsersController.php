@@ -12,6 +12,9 @@ class UsersController extends AppController {
 	public $account_types_plural = array('students', 'attendees');
 	public $invite_codes = array('hecstudent', 'hecattendee', 'bod');
 	public $alias = "Profiles";
+	public $uploadsFolder = "profiles";
+	public $uploadsFileTypes = array('image/jpeg', 'image/png', 'image/gif');
+	public $maxFileSize = 1000000;
 
 	public function beforeFilter() {
 		$this->Auth->autoRedirect = false;
@@ -107,6 +110,7 @@ class UsersController extends AppController {
 						if($this->request->data['User']['type'] == 'student'){
 							$this->request->data['User']['company'] = "Hotel Ezra Cornell ".$this->_currentHECYear();
 						}
+						$this->request->data['User']['photo'] = $this->_uploadFile($this->request->data);
 						if ($this->User->save($this->request->data)) {
 							$id = $this->User->id;
 							$this->request->data['User'] = array_merge($this->request->data["User"], array('id' => $id));
@@ -148,6 +152,7 @@ class UsersController extends AppController {
 		$this->set('title_for_layout', $user['User']['name']. "'s Profile");
 		$this->set('prevpage_for_layout', array('title' => ucwords(Inflector::pluralize($user['User']['type'])), 'routing' => array('controller' => $this->params['controller'], 'action' => Inflector::pluralize($user['User']['type']))));
  	}
+	
 	public function edit($id = null) {
 		$this->set('title_for_layout', 'Edit Profile');
 		$this->set('prevpage_for_layout', array('title' => 'My Profile', 'routing' => array('controller' => $this->params['controller'], 'action' => 'view', AuthComponent::user('id'))));
@@ -161,7 +166,8 @@ class UsersController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			
-			$fieldList = array('name', 'show_contact_info', 'email', 'phone_number', 'graduation_year', 'company', 'position', 'bio', 'picture');
+			$fieldList = array('name', 'show_contact_info', 'email', 'phone_number', 'graduation_year', 'company', 'position', 'bio', 'photo');
+			$this->request->data['User']['photo'] = $this->_uploadFile($this->request->data);
 			
 			if ($this->User->save($this->request->data, true, $fieldList)) {
 				$this->Session->setFlash(__('Your profile has been saved!'));
@@ -190,6 +196,55 @@ class UsersController extends AppController {
 			}
 		}
 		$this->redirect('/');
+	}
+	
+	/**
+	 * Upload File Function
+	 * 
+	 * @param $data - the request data submitted from the form
+	 * @return new file url, or a blank string if something went wrong
+	 */
+	private function _uploadFile($data){
+		$photo = $data['User']['picture'];
+		if($photo['name'] == ""){ // Don't reset.
+			return $data['User']['photo'];
+		}
+		
+		// Validate the file's type
+		if(!in_array($photo['type'], $this->uploadsFileTypes)){
+			$this->Session->setFlash('You may only upload image files. The rest of your data was saved.');
+			return "";
+		}
+		
+		// Validate the file's size
+		if($photo['size'] > $this->maxFileSize){
+			$this->Session->setFlash('Your upload cannot exceed '. ($this->maxFileSize/1000) .'KB. Please try a smaller photo.');
+			return "";
+		}
+		
+		// Hash filename
+		$filename = substr($photo['name'], 0, strrpos($photo['name'], '.'));
+		$extension = substr($photo['name'], strrpos($photo['name'], '.'));
+		$hashedName = md5($filename) . $extension;
+		
+		// Create paths
+		$path = DS . $this->uploadsFolder . DS . $hashedName;
+		$fullpath = realpath(dirname(__FILE__) . DS . '..' . DS . 'webroot') . $path;
+		
+		// Insure that directories are there.
+		if(!file_exists(dirname($fullpath))){
+			mkdir(dirname($fullpath), 0777, true);
+		}
+			
+		// Move files & return file path
+		if(move_uploaded_file($photo['tmp_name'], $fullpath)){
+			$this->Session->setFlash('Your file was uploaded successfully.');
+			return $path;
+		}else{
+			$this->Session->setFlash('Your file could not be uploaded.');
+			return "";
+		}
+		return "";
 	}
 
 }

@@ -838,10 +838,10 @@ a.ui-link-inherit {
   margin-top: 10px; }
 
 /* line 46, ../../Assets/Sass/application.scss */
-#speaker_page {
+#speaker_page, #profile {
   text-align: center; }
   /* line 48, ../../Assets/Sass/application.scss */
-  #speaker_page p#bio, #speaker_page p.bio {
+  #speaker_page p#bio, #speaker_page p.bio, #profile p#bio, #profile p.bio {
     text-align: left;
     text-indent: 40px; }
 
@@ -960,3 +960,11 @@ dl {
   /* line 159, ../../Assets/Sass/application.scss */
   #branding #logo {
     max-width: 100%; }
+
+/* line 164, ../../Assets/Sass/application.scss */
+.form_photo {
+  margin: 10px 0px; }
+
+/* line 167, ../../Assets/Sass/application.scss */
+.photo {
+  max-width: 200px; }
