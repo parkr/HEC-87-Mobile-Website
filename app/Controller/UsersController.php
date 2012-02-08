@@ -13,7 +13,7 @@ class UsersController extends AppController {
 	public $account_types_plural = array('students', 'attendees');
 	public $invite_codes = array('hecstudent', 'hecattendee', 'bod');
 	public $alias = "Profiles";
-	public $uploadsFolder = "profiles";
+	public $uploadsFolder = "userphotos";
 	public $uploadsFileTypes = array('image/jpeg', 'image/png', 'image/gif');
 	public $maxFileSize = 1000000;
 
