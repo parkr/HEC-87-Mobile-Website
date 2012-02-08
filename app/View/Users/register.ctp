@@ -1,4 +1,4 @@
-<?php echo $this->Form->create('User', array('type' => 'file'));?>
+<?php echo $this->Form->create('User', array('type' => 'file')); ?>
 	<fieldset>
 	<?php
 		echo $this->Form->input('role', array(
@@ -37,4 +37,4 @@
 		
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit'));?>
+<?php echo $this->Form->end(__('Submit')); ?>

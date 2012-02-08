@@ -107,18 +107,32 @@ class UsersController extends AppController {
 	public function reset($email, $hash_code) {
 		$user = $this->User->findByEmail($email);
 		$hash = $this->User->Hash->findByHash($hash_code);
-		//if($user['User']['id'] == $hash['Hash']['user_id'] && !$this->User->Hash->hasExpired($hash)){
-			//
-			//}
-		// TODO: Check hash
-		$this->set('title_for_layout', 'Forgot Password?');
+		$this->set('title_for_layout', 'Reset Password');
 		$this->set('prevpage_for_layout', array('title' => "Login", 'routing' => array('action' => 'login')));
-		if($this->request->is('post')){
-			// Hash password
-			// Set new password
+		if($user['User']['id'] == $hash['Hash']['user_id'] && !$this->User->Hash->hasExpired($hash)){
 			// Login
+			if(!$this->Auth->loggedIn()){ $this->Auth->login($user['User']); }
+			if($this->request->is('post') || $this->request->is('put')){
+				// Is the password confirmed?
+				if($this->request->data['User']['password'] == $this->request->data['User']['confirm_password']){
+					// Set new password
+					if ($this->User->save($this->request->data, true, array('password'))) {
+						$this->Session->setFlash('Your password has been updated.');
+						$this->redirect($this->Auth->loginRedirect);
+					}else{
+						$this->Session->setFlash('Your password could not be updated. Try again.');
+					}
+				}else{
+					$this->Session->setFlash('Your passwords do not match! Enter them again.');
+				}
+			}else{
+				$user['User']['password'] = ""; // Clear old password
+				$this->request->data = $user;
+			}
+		}else{
+			$this->Session->setFlash('Something went wrong when trying to request your password. Try requesting a reset again.');
+			$this->redirect(array('controller' => 'users', 'action' => 'forgot'));
 		}
-		
 	}
 	public function logout() {
 		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));

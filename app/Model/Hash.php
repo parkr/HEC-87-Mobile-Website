@@ -17,6 +17,12 @@ class Hash extends AppModel {
 		return AuthComponent::password($email);
 	}
 	
+	public function hasExpired($hash){
+		$expires = strtotime($hash['Hash']['expires']);
+		$now = time();
+		return ($now > $expires);
+	}
+	
 /**
  * Validation rules
  *
