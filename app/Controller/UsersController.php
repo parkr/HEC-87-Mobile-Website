@@ -15,7 +15,7 @@ class UsersController extends AppController {
 	public $alias = "Profiles";
 	public $uploadsFolder = "userphotos";
 	public $uploadsFileTypes = array('image/jpeg', 'image/png', 'image/gif');
-	public $maxFileSize = 1000000;
+	public $maxFileSize = 4194304; // Bytes (4MB)
 
 	public function beforeFilter() {
 		$this->Auth->autoRedirect = false;
