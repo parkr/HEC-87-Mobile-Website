@@ -35,6 +35,7 @@
 	Router::connect('/logout', array('controller' => 'users', 'action' => 'logout'));
 	Router::connect('/register', array('controller' => 'users', 'action' => 'register'));
 	Router::connect('/reset/*', array('controller' => 'users', 'action' => 'reset'));
+	Router::connect('/contact', array('controller' => 'pages', 'action' => 'contact'));
 
 /**
  * Route new names / aliases to controllers.
