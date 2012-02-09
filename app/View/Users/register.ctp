@@ -12,7 +12,7 @@
 		echo $this->Form->input('email');
 		echo $this->Form->input('password');
 		echo $this->Form->input('confirm_password',
-			array('type' => 'password')
+			array('type' => 'password', 'div' => 'input password required')
 		);
 		echo $this->Form->input('name');
 		echo $this->Form->input('phone_number');
@@ -28,6 +28,7 @@
 		
 		echo '<div class="form_photo">';
 		echo $this->Form->input('picture', array('type' => 'file'));
+		echo $this->Form->input('photo', array('type' => 'hidden'));
 		echo '</div>';
 		
 		echo $this->Form->input('show_contact_info', array(

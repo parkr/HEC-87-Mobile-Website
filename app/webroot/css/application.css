@@ -968,3 +968,7 @@ dl {
 /* line 167, ../../Assets/Sass/application.scss */
 .photo {
   max-width: 200px; }
+
+/* line 171, ../../Assets/Sass/application.scss */
+.required label.ui-input-text::before {
+  content: "* "; }

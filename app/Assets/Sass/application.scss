@@ -167,3 +167,7 @@ dl {
 .photo {
 	max-width: 200px;
 }
+
+.required label.ui-input-text::before {
+content: "* ";
+}
