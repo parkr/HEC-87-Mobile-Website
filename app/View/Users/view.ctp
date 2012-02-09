@@ -22,26 +22,26 @@
 	<?php if($user['User']['show_contact_info']): ?>
 	<dt><?php echo __('Email'); ?></dt>
 	<dd>
-		<?php echo h($user['User']['email']); ?>
+		<?php echo $this->Html->link(h($user['User']['email']), 'mailto:'.$user['User']['email']); ?>
 		&nbsp;
 	</dd>
 	<dt><?php echo __('Phone Number'); ?></dt>
 	<dd>
-		<?php echo h($user['User']['phone_number']); ?>
+		<?php echo $this->Html->link(h($user['User']['phone_number']), 'tel:'.$user['User']['phone_number']); ?>
 		&nbsp;
 	</dd>
 	<?php endif; ?>
+	<?php if($user['User']['bio']): ?>
 	<dt><?php echo __('Bio'); ?></dt>
 	<dd>
 		<?php echo h($user['User']['bio']); ?>
 		&nbsp;
 	</dd>
-	<dt><?php echo __('Joined'); ?></dt>
-	<dd>
-		<?php echo date("l, F j, Y", strtotime(h($user['User']['date_created']))); ?>
-		&nbsp;
-	</dd>
+	<?php endif; ?>
 </dl>
+
+<?php echo $this->Html->tag('div', __('Member since') . ' ' . date("l, F j, Y", strtotime(h($user['User']['date_created']))) , array('class' => 'details')); ?>
+
 <?php
 
 if($user['User']['id'] == AuthComponent::user('id')){
