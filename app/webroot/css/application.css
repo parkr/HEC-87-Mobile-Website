@@ -972,3 +972,8 @@ dl {
 /* line 171, ../../Assets/Sass/application.scss */
 .required label.ui-input-text::before {
   content: "* "; }
+
+/* line 176, ../../Assets/Sass/application.scss */
+.event .event_photo {
+  max-width: 100%;
+  margin: 0 auto; }
