@@ -44,3 +44,7 @@ tmtags
 
 # Sass
 */.sass-cache/*
+
+# Project-Specific
+app/webroot/userphotos/*
+app/remote_pull.sh
