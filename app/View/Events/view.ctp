@@ -34,7 +34,7 @@ echo $this->Html->tag('h3', h($event['Event']['location']));
 	</dd>
 	<?php endif; ?>
 	<?php if($event['Menu']): ?>
-	<dt><?php echo __('Menus'); ?></dt>
+	<dt><?php echo __('F&B Menus'); ?></dt>
 	<dd>
 		<?php
 			$output = array();
