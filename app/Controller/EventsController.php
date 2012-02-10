@@ -9,7 +9,7 @@ class EventsController extends AppController {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('view');
+		$this->Auth->allow('view', 'thursday', 'friday', 'saturday');
 	}
 	
 /**
@@ -19,9 +19,26 @@ class EventsController extends AppController {
  */
 	public function index() {
 		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
-		$this->set('thursday', $this->Event->find('all', $this->_getIndexCondsOnDate(2012, 04, 12)));
-		$this->set('friday', $this->Event->find('all', $this->_getIndexCondsOnDate(2012, 04, 13)));
-		$this->set('saturday', $this->Event->find('all', $this->_getIndexCondsOnDate(2012, 04, 14)));
+		$this->set('days', array(
+			'Thursday, April 12, 2012' => array('controller' => 'events', 'action' => 'thursday'),
+			'Friday, April 13, 2012' => array('controller' => 'events', 'action' => 'friday'),
+			'Saturday, April 14, 2012' => array('controller' => 'events', 'action' => 'saturday'),
+		));
+	}
+	public function thursday(){
+		$this->set('title_for_layout', $event['Event']['name']);
+		$this->set('today', $this->Event->find('all', $this->_getIndexCondsOnDate(2012, 04, 12)));
+		$this->set('prevpage_for_layout', array('title' => "Program", 'routing' => array('controller' => 'events', 'action' => 'index')));
+	}
+	public function friday(){
+		$this->set('title_for_layout', $event['Event']['name']);
+		$this->set('today', $this->Event->find('all', $this->_getIndexCondsOnDate(2012, 04, 13)));
+		$this->set('prevpage_for_layout', array('title' => "Program", 'routing' => array('controller' => 'events', 'action' => 'index')));
+	}
+	public function saturday(){
+		$this->set('title_for_layout', $event['Event']['name']);
+		$this->set('today', $this->Event->find('all', $this->_getIndexCondsOnDate(2012, 04, 14)));
+		$this->set('prevpage_for_layout', array('title' => "Program", 'routing' => array('controller' => 'events', 'action' => 'index')));
 	}
 	
 	private function _getIndexCondsOnDate($year, $month, $day){
@@ -51,6 +68,9 @@ class EventsController extends AppController {
 		$event = $this->Event->read(null, $id);
 		$this->set('event', $event);
 		$this->set('title_for_layout', $event['Event']['name']);
-		$this->set('prevpage_for_layout', array('title' => ucwords($this->params['controller']), 'routing' => array('controller' => $this->params['controller'], 'action' => 'index')));
+		$this->set('prevpage_for_layout', array(
+			'title' => ucwords(date('l', strtotime($event['Event']['start_time']))), 
+			'routing' => array('controller' => $this->params['controller'], 'action' => strtolower(date('l', strtotime($event['Event']['start_time']))))
+		)); // Reroute to the day from whence you came
 	}
 }
