@@ -8,7 +8,7 @@
 			<p>
 				<?php echo h('BOH FM: '.$menu['Menu']['boh_fm']); ?>
 				<?php if($menu['Event'] && $menu['Event']['id']): ?>
-					<?php echo '<br>' . __('To be served at ') . $this->Html->tag('strong', $menu['Event']['name']); ?>
+					<?php echo '<br>' . __('F&B Menu for ') . $this->Html->tag('strong', $menu['Event']['name']); ?>
 				<?php endif; ?>
 				
 			</p>
