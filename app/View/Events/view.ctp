@@ -1,10 +1,8 @@
 <?php 
 
 echo $this->Html->tag('h2', h($event['Event']['name']));
-echo $this->Html->tag('h3', 
-	date("l, F j, Y", strtotime($event['Event']['start_time'])) . ', ' .
-	date("g:i a", strtotime($event['Event']['start_time'])) . " &mdash; " . date("g:i a", strtotime($event['Event']['end_time']))
-);
+echo $this->Html->tag('h3', date("l, F j, Y", strtotime($event['Event']['start_time'])));
+echo $this->Html->tag('h4', date("g:i a", strtotime($event['Event']['start_time'])) . " &mdash; " . date("g:i a", strtotime($event['Event']['end_time'])));
 echo $this->Html->tag('h3', h($event['Event']['location']));
 ?>
 
@@ -17,6 +15,23 @@ echo $this->Html->tag('h3', h($event['Event']['location']));
 	<?php if($event['Event']['description']): ?>
 	<dt><?php echo __('Description'); ?></dt>
 	<dd><?php echo h($event['Event']['description']); ?></dd>
+	<?php endif; ?>
+	<?php if($event['Speaker']): ?>
+	<dt><?php echo __('Speakers'); ?></dt>
+	<dd>
+		<?php
+			$output = array();
+			foreach($event['Speaker'] as $sp){
+				$output[] = $this->Html->link($sp['name'], array('controller' => 'speakers', 'action' => 'view', $sp['id'])) .
+					', ' . $sp['position'] . ', ' . $sp['company'];
+			}
+			for($i=0; $i<count($output); $i++){
+				echo $output[$i];
+				if($i < count($output)-1){ echo '<br>'; }
+			}
+				
+		?>
+	</dd>
 	<?php endif; ?>
 	<?php if($event['Menu']): ?>
 	<dt><?php echo __('Menus'); ?></dt>

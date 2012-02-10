@@ -78,7 +78,9 @@ class Event extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
-		)
+		),
+		'Speaker'
 	);
+
 	
 }
