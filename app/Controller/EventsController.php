@@ -26,17 +26,17 @@ class EventsController extends AppController {
 		));
 	}
 	public function thursday(){
-		$this->set('title_for_layout', $event['Event']['name']);
+		$this->set('title_for_layout', 'Thursday, April 12, 2012');
 		$this->set('today', $this->Event->find('all', $this->_getIndexCondsOnDate(2012, 04, 12)));
 		$this->set('prevpage_for_layout', array('title' => "Program", 'routing' => array('controller' => 'events', 'action' => 'index')));
 	}
 	public function friday(){
-		$this->set('title_for_layout', $event['Event']['name']);
+		$this->set('title_for_layout', 'Friday, April 13, 2012');
 		$this->set('today', $this->Event->find('all', $this->_getIndexCondsOnDate(2012, 04, 13)));
 		$this->set('prevpage_for_layout', array('title' => "Program", 'routing' => array('controller' => 'events', 'action' => 'index')));
 	}
 	public function saturday(){
-		$this->set('title_for_layout', $event['Event']['name']);
+		$this->set('title_for_layout', 'Saturday, April 14, 2012');
 		$this->set('today', $this->Event->find('all', $this->_getIndexCondsOnDate(2012, 04, 14)));
 		$this->set('prevpage_for_layout', array('title' => "Program", 'routing' => array('controller' => 'events', 'action' => 'index')));
 	}
