@@ -1,7 +1,7 @@
 <ul id="nodes" data-role="listview" data-inset="true" data-theme="a">
 	<?php
-		foreach($account_types as $type){
-			echo $this->Html->tag('li', $this->Html->link(ucwords($type), array('controller' => 'users', 'action' => Inflector::pluralize($type))));
+		foreach($account_types as $name => $routing){
+			echo $this->Html->tag('li', $this->Html->link($name, $routing));
 		}
 	?>
 </ul>
