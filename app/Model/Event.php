@@ -81,6 +81,7 @@ class Event extends AppModel {
 		),
 		'Speaker'
 	);
+	public $hasAndBelongsToMany = "User";
 
 	
 }

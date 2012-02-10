@@ -11,6 +11,15 @@ class User extends AppModel {
 	public $name = 'User';
 	public $displayField = 'name';
 	public $hasMany = 'Hash';
+	public $hasAndBelongsToMany = array(
+        'Event' => array(
+			'className'              => 'Event',
+			'joinTable'              => 'events_users',
+			'foreignKey'             => 'user_id',
+			'associationForeignKey'  => 'event_id',
+			'unique'                 => false,
+		)
+	);
 	
 	public function beforeSave() {
 		if (isset($this->data[$this->alias]['password'])) {
