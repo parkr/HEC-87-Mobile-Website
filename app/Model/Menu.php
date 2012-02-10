@@ -79,7 +79,7 @@ class Menu extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Events' => array(
+		'Event' => array(
 			'className' => 'Event',
 			'foreignKey' => 'event_id',
 			'conditions' => '',
