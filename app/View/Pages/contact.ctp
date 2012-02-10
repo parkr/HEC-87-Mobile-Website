@@ -1,10 +1,10 @@
 <ul id="nodes" data-role="listview" data-inset="true" data-theme="a" data-filter="false">
 	
-	<li data-role="list-divider">Go "old-fashioned":</li>
+	<li data-role="list-divider" data-theme="c">Go "old-fashioned":</li>
 	<li><a href="mailto:hec@cornell.edu">hec@cornell.edu</a></li>
 	<li><a href="tel:+16072553824">+1 (607) 255-3824</a></li>
 	
-	<li data-role="list-divider">We're social!</li>
+	<li data-role="list-divider" data-theme="c">We're social!</li>
 	<?php
 	
 	$social = array(
