@@ -5,9 +5,6 @@
 		<a href="<?php echo $this->Html->url(array('action' => 'view', $event['Event']['id'])); ?>">
 			<h3><?php echo h($event['Event']['name']); ?>&nbsp;</h3>
 			<p>
-				<?php echo h($event['Event']['description']); ?>&nbsp;
-			</p>
-			<p class="ui-li-aside">
 				<strong>
 					<?php echo h(date("g:i a", strtotime($event['Event']['start_time']))); ?> 
 					&mdash; 
