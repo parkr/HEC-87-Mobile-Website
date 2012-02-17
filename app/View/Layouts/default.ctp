@@ -4,6 +4,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?php $this->Html->meta('icon'); ?>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 	<link rel="icon" href="<?php echo full_url(); ?>/img/hec-logo-icon.png">
 	<title><?php echo $title_for_layout; ?> &mdash; Hotel Ezra Cornell 87</title>
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile.structure-1.0.min.css" type="text/css" media="screen" charset="utf-8" /> 
