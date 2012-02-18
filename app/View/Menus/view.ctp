@@ -11,3 +11,9 @@
 	<dd><?php echo $food['description']; ?></dd>
 	<?php endforeach; ?>
 </dl>
+<?php if(isset($menu['Menu']['photo']) && $menu['Menu']['photo'] != ""): ?>
+<dl class="team_photo">
+	<dt>Team</dt>
+	<dd><?php echo $menu['Menu']['photo']; ?></dd>
+</dl>
+<?php endif; ?>
