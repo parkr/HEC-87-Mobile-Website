@@ -1,7 +1,7 @@
 $(document).live('pageinit', function(event) {
     $.extend($.mobile, {
-		//ajaxEnabled: false,
-		//ajaxLinksEnabled: false,
+		ajaxEnabled: false,
+		ajaxLinksEnabled: false,
 		ajaxFormsEnabled: false
 	});
 	(function(){
