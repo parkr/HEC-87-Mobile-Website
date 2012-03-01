@@ -160,26 +160,39 @@ class UsersController extends AppController {
 		$this->set('title_for_layout', 'Register');
 		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
 		
-		// Check for invalidity.
+		// Check for access from logged-in user.
 		if($this->Auth->loggedIn()){
 			$this->Session->setFlash('You are already logged in.');
 			$this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
 		}
+		
+		// Check for the existence and validity of invite code
 		if(isset($this->params->query) && isset($this->params->query['invite']) && in_array($this->params->query['invite'], $this->invite_codes)){
-			$this->set('type', (isset($this->params->query['type']) && $this->params->query['type'] != "" && in_array($this->params->query['type'], $this->account_types)) ? $this->params->query['type'] : "student");
+			$this->set('type', 
+						(isset($this->params->query['type']) && $this->params->query['type'] != "" && in_array($this->params->query['type'], $this->account_types)) 
+							? $this->params->query['type'] 
+							: "student"
+			);
 			if ($this->request->is('post')) {
 				$this->User->create();
+				// Utilizing the confirm_password concept
 				if($this->request->data['User']['password'] != $this->request->data['User']['confirm_password']){
 					$this->Session->setFlash(__('Your passwords do not match.'));
 				} else {
+					// Check to see if this email already exists. Unique emails enforced.
 					if($this->User->emailExists($this->request->data['User']['email'])){
 						$this->Session->setFlash(__('The email you entered is already associated with another user.'));
 					}else{
+						// Automatically set role and date_created
 						$this->request->data['User']['role'] = "user";
 						$this->request->data['User']['date_created'] = date("Y-m-d H:i:s");
+						
+						// Automatically set company if User.type is student
 						if($this->request->data['User']['type'] == 'student'){
 							$this->request->data['User']['company'] = "Hotel Ezra Cornell ".$this->_currentHECYear();
 						}
+						
+						// Upload photo.
 						$this->request->data['User']['photo'] = $this->_uploadFile($this->request->data);
 						if ($this->User->save($this->request->data)) {
 							$id = $this->User->id;
