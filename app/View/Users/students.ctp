@@ -4,8 +4,17 @@
 		foreach($people as $person){
 			echo $this->Html->tag('li', 
 				$this->Html->tag('a',
-					$this->Html->tag('h3', (($sort_field == "name") ? $person[$alias]['name'] : $person[$alias]['position'])) .
-					$this->Html->para(null, (($sort_field == "name") ? $person[$alias]['position'] : $person[$alias]['name'])),
+					$this->Html->tag('h3', 
+						(($sort_field == "first_name") 
+							? $person[$alias]['name'] 
+							: (
+								($sort_field == "last_name") 
+									? $person[$alias]['formal_name'] 
+									: $person[$alias]['position']
+								)
+						)
+					) .
+					$this->Html->para(null, (($sort_field == "first_name" || $sort_field == "last_name") ? $person[$alias]['position'] : $person[$alias]['name'])),
 					array('href' => $this->Html->url(array('controller' => 'users', 'action' => 'view', $person[$alias]['id'])))
 				)
 			);

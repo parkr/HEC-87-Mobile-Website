@@ -11,7 +11,8 @@ class User extends AppModel {
 	public $name = 'User';
 	public $displayField = 'name';
 	public $virtualFields = array(
-	    'name' => 'CONCAT(User.first_name, " ", User.last_name)'
+	    'name' => 'CONCAT(User.first_name, " ", User.last_name)',
+		'formal_name' => 'CONCAT(User.last_name, ", ", User.first_name)',
 	);
 	public $hasMany = 'Hash';
 	public $hasAndBelongsToMany = array(

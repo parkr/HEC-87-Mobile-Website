@@ -12,12 +12,15 @@ class UsersController extends AppController {
 	public $account_types = array('student', 'attendee');
 	public $account_types_plural = array('students', 'attendees');
 	public $account_types_with_routing = array(
-		'Students by Name' => array('controller' => 'users', 'action' => 'students', 'by', 'name'),
+		'Students by First Name' => array('controller' => 'users', 'action' => 'students', 'by', 'first_name'),
+		'Students by Last Name' => array('controller' => 'users', 'action' => 'students', 'by', 'last_name'),
 		'Students by Position' => array('controller' => 'users', 'action' => 'students', 'by', 'position'),
-		'Attendees' => array('controller' => 'users', 'action' => 'attendees'),
+		'Attendees by First Name' => array('controller' => 'users', 'action' => 'attendees', 'by', 'first_name'),
+		'Attendees by Last Name' => array('controller' => 'users', 'action' => 'attendees', 'by', 'last_name'),
+		'Attendees by Company' => array('controller' => 'users', 'action' => 'attendees', 'by', 'company'),
 	);
-	public $invite_codes = array('hecstudent', 'hecattendee', 'bod');
-	public $sort_fields = array('name', 'position');
+	public $sort_fields = array('first_name', 'last_name', 'position', 'company');
+	public $invite_codes = array('hecstudent', 'hecattendee');
 	public $alias = "Profiles";
 	public $uploadsFolder = "userphotos";
 	public $uploadsFileTypes = array('image/jpeg', 'image/png', 'image/gif');
@@ -49,7 +52,7 @@ class UsersController extends AppController {
 		$this->set('title_for_layout', $this->alias); 
 		$this->set('prevpage_for_layout', array('title' => 'Home', 'routing' => '/')); 
 	}
-	public function students($by = "by", $field = "name"){
+	public function students($by = "by", $field = "first_name"){
 		if(in_array($field, $this->sort_fields)){
 			$this->set('title_for_layout', 'Students');
 			$params = array(
@@ -60,17 +63,24 @@ class UsersController extends AppController {
 			$this->set('sort_field', $field);
 			$this->set('prevpage_for_layout', array('title' => $this->alias, 'routing' => array('controller' => $this->params['controller'], 'action' => 'index')));
 		}else{
+			$this->Session->setFlash("You may not sort attendees by $field.");
 			$this->redirect(array('controller' => 'users', 'action' => 'index'));
 		}
 	}
-	public function attendees(){
-		$this->set('title_for_layout', 'Attendees');
-		$params = array(
-			'conditions' => array('User.type' => 'attendee'),
-			'order' => array('User.name ASC')
-		);
-		$this->set('people', $this->User->find('all', $params));
-		$this->set('prevpage_for_layout', array('title' => $this->alias, 'routing' => array('controller' => $this->params['controller'], 'action' => 'index')));
+	public function attendees($by = "by", $field = "first_name"){
+		if(in_array($field, $this->sort_fields)){
+			$this->set('title_for_layout', 'Attendees');
+			$params = array(
+				'conditions' => array('User.type' => 'attendee'),
+				'order' => array("User.$field ASC")
+			);
+			$this->set('people', $this->User->find('all', $params));
+			$this->set('sort_field', $field);
+			$this->set('prevpage_for_layout', array('title' => $this->alias, 'routing' => array('controller' => $this->params['controller'], 'action' => 'index')));
+		}else{
+			$this->Session->setFlash("You may not sort attendees by $field.");
+			$this->redirect(array('controller' => 'users', 'action' => 'index'));
+		}
 	}
 
 	/** 
