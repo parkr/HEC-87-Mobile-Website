@@ -61,7 +61,7 @@
 			<a href="<?php echo $this->Html->url('/'); ?>" data-icon="home" data-direction="reverse" data-iconpos="notext" class="ui-btn-right">Home</a>
 		    <h1><?php echo $title_for_layout; ?></h1>
 		</div>
-		<div data-role="content" id="<?php echo $this->params['controller'] ?>">
+		<div data-role="content" id="<?php echo $this->params['controller'] ?>" data-action="<?php echo $this->params['action'] ?>">
 			<?php $flash = $this->Session->flash(); ?>
 			<?php if($flash != ""): ?><div data-role="header">
 				<?php echo $flash; ?>
