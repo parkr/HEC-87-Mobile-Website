@@ -10,6 +10,9 @@ class User extends AppModel {
 	
 	public $name = 'User';
 	public $displayField = 'name';
+	public $virtualFields = array(
+	    'name' => 'CONCAT(User.first_name, " ", User.last_name)'
+	);
 	public $hasMany = 'Hash';
 	public $hasAndBelongsToMany = array(
         'Event' => array(
@@ -24,6 +27,11 @@ class User extends AppModel {
 	public function beforeSave() {
 		if (isset($this->data[$this->alias]['password'])) {
 			$this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
+		}
+		if(isset($this->data[$this->alias]['phone_number'])){
+			$num = $this->data[$this->alias]['phone_number'];
+			$num = preg_replace('/(-|_| |\+|\(\))+/', "", $num);
+			$this->data[$this->alias]['phone_number'] = $num;
 		}
 		return true;
 	}
