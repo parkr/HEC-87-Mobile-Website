@@ -44,7 +44,7 @@
 }
 
 #speaker_page, #profile {
-	text-align: center;
+	text-align: left;
 	p#bio, p.bio {
 		text-align: left;
 		text-indent: 40px;
@@ -52,7 +52,7 @@
 }
 
 #sponsor_page {
-	text-align: center;
+	text-align: left;
 	img#logo {
 		//float: left;
 	}	
@@ -65,7 +65,7 @@
 }
 
 dl {
-	text-align: center;
+	text-align: left;
 	dt {
 		font-size: 1.3em;
 		padding: 10px;
@@ -76,7 +76,7 @@ dl {
 	dd {
 		margin-bottom: 10px;
 		font-size: 1.2em;
-		margin-left: 0;
+		margin-left: 2em;
 	}
 }
 

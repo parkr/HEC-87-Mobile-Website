@@ -3,7 +3,7 @@
 # Set this to the root of your project when deployed:
 http_path = "/"
 css_dir = "webroot/css"
-sass_dir = "Assets/Sass"
+sass_dir = "Sass"
 images_dir = "webroot/img"
 
 # You can select your preferred output style here (can be overridden via the command line):
