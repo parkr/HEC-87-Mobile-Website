@@ -1,15 +1,6 @@
 <?php
 	
-require_once(dirname(__FILE__)."/../Config/database.php");
-
-$dbconfig = new DATABASE_CONFIG();
-$db = $dbconfig->default;
-
-echo "Establishing connection...\n";
-mysql_connect($db['host'], $db['login'], $db['password']) or die("Could not establish connection to database.\n");
-mysql_select_db($db['database']);
-
-$db['prefix'];
+require_once("Lib/connect.php");
 
 $query = "SELECT id,name FROM ".$db['prefix']."users WHERE 1=1";
 $r = mysql_query($query) or die("Could not get list of User.id's.\n");
