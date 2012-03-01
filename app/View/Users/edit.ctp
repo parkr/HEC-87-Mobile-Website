@@ -3,7 +3,8 @@
 	<?php
 		echo $this->Form->input('id', array('type' => 'hidden'));
 		echo $this->Form->input('email');
-		echo $this->Form->input('name');
+		echo $this->Form->input('first_name');
+		echo $this->Form->input('last_name');
 		echo $this->Form->input('phone_number');
 		echo $this->Html->tag('div', 'Ex: 555 123 4567', array('class' => 'details'));
 		echo $this->Form->input('graduation_year', array(
