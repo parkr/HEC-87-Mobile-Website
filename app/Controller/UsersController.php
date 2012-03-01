@@ -238,9 +238,11 @@ class UsersController extends AppController {
  	public function view($id = null) {
  		$this->User->id = $id;
  		if (!$this->User->exists()) {
- 			throw new NotFoundException(__('Invalid event'));
+ 			throw new NotFoundException(__('Invalid user'));
  		}
+		
 		$user = $this->User->read(null, $id);
+		$this->User->bumpProfileViews();
  		$this->set('user', $user);
 		$this->set('title_for_layout', $user['User']['name']. "'s Profile");
 		$this->set('prevpage_for_layout', array('title' => ucwords(Inflector::pluralize($user['User']['type'])), 'routing' => array('controller' => $this->params['controller'], 'action' => Inflector::pluralize($user['User']['type']))));

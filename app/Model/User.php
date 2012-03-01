@@ -42,6 +42,17 @@ class User extends AppModel {
 			'conditions' => array('User.email' => $email)
 		)) > 0;
 	}
+	
+	public function bumpProfileViews(){
+		if($this->data && $this->data[$this->alias]){
+			$newpv = $this->data[$this->alias]['profile_views'] += 1;
+			$this->set('profile_views', $newpv);
+			$this->data['User']['profile_views'] = $newpv;
+			return $this->save();
+		}else{
+			return false;
+		}
+	}
 
 /**
  * Validation rules
