@@ -30,7 +30,7 @@ class User extends AppModel {
 		}
 		if(isset($this->data[$this->alias]['phone_number'])){
 			$num = $this->data[$this->alias]['phone_number'];
-			$num = preg_replace('/(-|_| |\+|\(\))+/', "", $num);
+			$num = preg_replace('/(-|_| |\+|\(|\)|\.)+/', "", $num);
 			$this->data[$this->alias]['phone_number'] = $num;
 		}
 		return true;
@@ -48,10 +48,20 @@ class User extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'name' => array(
+		'first_name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				'message' => 'Your name cannot be blank.',
+				'message' => 'Your first name cannot be blank.',
+				'allowEmpty' => false,
+				'required' => true,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'last_name' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				'message' => 'Your last name cannot be blank.',
 				'allowEmpty' => false,
 				'required' => true,
 				//'last' => false, // Stop validation after this rule
