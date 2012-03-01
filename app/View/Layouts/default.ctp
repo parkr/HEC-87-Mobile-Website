@@ -32,12 +32,16 @@
 		    <!--<h1>The Hotel Ezra Cornell</h1>
 		    <p>Showcasing Hospitality Education Through Student Leadership</p>-->
 			<?php 
-				echo $this->Html->image(
+				echo $this->Html->link(
+					$this->Html->image(
 						'the_hec_logo.png',
 						array(
 							'alt' => "The Hotel Ezra Cornell",
 							'id' => 'logo'
 						)
+					),
+					"/",
+					array('escape' => false)
 				); 
 			?>
 		</div>
