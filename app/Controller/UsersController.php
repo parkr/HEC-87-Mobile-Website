@@ -12,12 +12,16 @@ class UsersController extends AppController {
 	public $account_types = array('student', 'attendee');
 	public $account_types_plural = array('students', 'attendees');
 	public $account_types_with_routing = array(
-		'Students by First Name' => array('controller' => 'users', 'action' => 'students', 'by', 'first_name'),
-		'Students by Last Name' => array('controller' => 'users', 'action' => 'students', 'by', 'last_name'),
-		'Students by Position' => array('controller' => 'users', 'action' => 'students', 'by', 'position'),
-		'Attendees by First Name' => array('controller' => 'users', 'action' => 'attendees', 'by', 'first_name'),
-		'Attendees by Last Name' => array('controller' => 'users', 'action' => 'attendees', 'by', 'last_name'),
-		'Attendees by Company' => array('controller' => 'users', 'action' => 'attendees', 'by', 'company'),
+		'attendees' => array(
+			'Attendees by First Name' => array('controller' => 'users', 'action' => 'attendees', 'by', 'first_name'),
+			'Attendees by Last Name' => array('controller' => 'users', 'action' => 'attendees', 'by', 'last_name'),
+			'Attendees by Company' => array('controller' => 'users', 'action' => 'attendees', 'by', 'company')
+		),
+		'students' => array(
+			'Students by First Name' => array('controller' => 'users', 'action' => 'students', 'by', 'first_name'),
+			'Students by Last Name' => array('controller' => 'users', 'action' => 'students', 'by', 'last_name'),
+			'Students by Position' => array('controller' => 'users', 'action' => 'students', 'by', 'position')
+		)
 	);
 	public $sort_fields = array('first_name', 'last_name', 'position', 'company');
 	public $invite_codes = array('hecstudent', 'hecattendee');
