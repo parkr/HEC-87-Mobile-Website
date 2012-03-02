@@ -199,7 +199,7 @@ class UsersController extends AppController {
 						
 						// Automatically set company if User.type is student
 						if($this->request->data['User']['type'] == 'student'){
-							$this->request->data['User']['company'] = "Hotel Ezra Cornell ".$this->_currentHECYear();
+							$this->request->data['User']['company'] = $this->_defaultStudentCompany();
 						}
 						
 						// Upload photo.
@@ -219,6 +219,10 @@ class UsersController extends AppController {
 			$this->Session->setFlash('You must have a valid invite code to be qualified to register.');
 			$this->redirect(array('controller' => 'pages', 'action' => 'home'));
 		}
+	}
+	
+	private function _defaultStudentCompany(){
+		return "HEC ".$this->_currentHECYear();
 	}
 	
 	private function _currentHECYear(){
