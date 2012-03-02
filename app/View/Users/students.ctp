@@ -1,7 +1,16 @@
 <?php $alias = 'User'; ?>
 <ul id="nodes" data-role="listview" data-inset="true" data-theme="a" data-filter="true">
 	<?php
+		$indices = array(
+			'prev' => '',
+			'curr' => ''
+		);
 		foreach($people as $person){
+			$indices['curr'] = strtolower(substr($person[$alias][$sort_field], 0, 1));
+			if($indices['prev'] != $indices['curr']){
+				echo $this->Html->tag('li', ucwords($indices['curr']), array('data-role' => 'list-divider', 'data-theme' => 'c'));
+				$indices['prev'] = $indices['curr'];
+			}
 			echo $this->Html->tag('li', 
 				$this->Html->tag('a',
 					$this->Html->tag('h3', 
