@@ -74,6 +74,9 @@ class UsersController extends AppController {
 				'conditions' => array('User.type' => 'attendee'),
 				'order' => array("User.$field ASC")
 			);
+			if($field == "company"){
+				$params['conditions']['User.company != '] = "";
+			}
 			$this->set('people', $this->User->find('all', $params));
 			$this->set('sort_field', $field);
 			$this->set('prevpage_for_layout', array('title' => $this->alias, 'routing' => array('controller' => $this->params['controller'], 'action' => 'index')));
