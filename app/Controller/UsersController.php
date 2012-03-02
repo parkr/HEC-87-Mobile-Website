@@ -275,6 +275,8 @@ class UsersController extends AppController {
 			$fieldList = array('name', 'show_contact_info', 'email', 'phone_number', 'graduation_year', 'company', 'position', 'bio', 'photo');
 			$this->request->data['User']['photo'] = $this->_uploadFile($this->request->data);
 			
+			$this->request->data['User']['bio'] = normalize_newlines($this->request->data['User']['bio']);
+			
 			if ($this->User->save($this->request->data, true, $fieldList)) {
 				$this->Session->setFlash(__('Your profile has been saved!'));
 				$this->redirect(array('action' => 'edit', $id));

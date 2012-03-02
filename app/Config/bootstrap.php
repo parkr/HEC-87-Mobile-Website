@@ -71,7 +71,7 @@ function full_url(){
 		if($_SERVER['SERVER_NAME'] === "hec.parkermoore.de"){
 			return "http://hec.parkermoore.de";
 		}else{
-			return "http://www.mobile.hotelezracornell.com/New";
+			return "http://www.mobile.hotelezracornell.com";
 		}
 	}
 }
@@ -82,5 +82,9 @@ function human($text){
 
 function linkify($text) {
 	return preg_replace('@(https?://([-\w\.]+[-\w])+(:\d+)?(/([\w/_\.#-]*(\?\S+)?[^\.\s])?)?)@', '<a href="$1" target="_blank">$1</a>', $text);
+}
+
+function normalize_newlines($text){
+	return str_replace("\r", "\n", str_replace("\r\n", "\n", $text));
 }
 

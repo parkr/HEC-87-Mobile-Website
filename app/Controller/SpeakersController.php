@@ -33,7 +33,6 @@ class SpeakersController extends AppController {
 			throw new NotFoundException(__('Speaker not found.'));
 		}
 		$speaker = $this->Speaker->read(null, $id);
-		$speaker['Speaker']['name'] = $this->Speaker->formattedName($speaker);
 		$this->set('speaker', $speaker);
 		$this->set('title_for_layout', $speaker['Speaker']['name']);
 		$this->set('prevpage_for_layout', array('title' => ucwords($this->params['controller']), 'routing' => array('controller' => $this->params['controller'], 'action' => 'index')));
