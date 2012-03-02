@@ -83,5 +83,11 @@ class Event extends AppModel {
 	);
 	public $hasAndBelongsToMany = "User";
 
-	
+	public function beforeSave() {
+		if(isset($this->data[$this->alias]['description'])){
+			$this->data[$this->alias]['description'] = normalize_newlines($this->data[$this->alias]['description']);
+		}
+		return true;
+	}
+
 }

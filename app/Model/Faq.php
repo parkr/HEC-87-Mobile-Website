@@ -74,4 +74,12 @@ class Faq extends AppModel {
 			),
 		),
 	);
+	
+	public function beforeSave() {
+		if(isset($this->data[$this->alias]['answer'])){
+			$this->data[$this->alias]['answer'] = normalize_newlines($this->data[$this->alias]['answer']);
+		}
+		return true;
+	}
+	
 }

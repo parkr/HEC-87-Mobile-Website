@@ -15,6 +15,14 @@ class Speaker extends AppModel {
 	    'name' => 'CONCAT(Speaker.first_name, " ", Speaker.last_name)'
 	);
 	public $belongsTo = 'Event';
+	
+	public function beforeSave() {
+		if(isset($this->data[$this->alias]['bio'])){
+			$this->data[$this->alias]['bio'] = normalize_newlines($this->data[$this->alias]['bio']);
+		}
+		return true;
+	}
+	
 /**
  * Validation rules
  *

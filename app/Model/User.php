@@ -34,6 +34,9 @@ class User extends AppModel {
 			$num = preg_replace('/(-|_| |\+|\(|\)|\.)+/', "", $num);
 			$this->data[$this->alias]['phone_number'] = $num;
 		}
+		if(isset($this->data[$this->alias]['bio'])){
+			$this->data[$this->alias]['bio'] = normalize_newlines($this->data[$this->alias]['bio']);
+		}
 		return true;
 	}
 	

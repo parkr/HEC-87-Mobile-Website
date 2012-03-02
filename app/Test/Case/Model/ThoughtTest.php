@@ -1,5 +1,5 @@
 <?php
-/* Thought Test cases generated on: 2012-02-07 02:26:15 : 1328599575*/
+/* Thought Test cases generated on: 2012-03-02 17:47:54 : 1330728474*/
 App::uses('Thought', 'Model');
 
 /**
@@ -12,7 +12,7 @@ class ThoughtTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.thought');
+	public $fixtures = array('app.thought', 'app.event', 'app.menu', 'app.food_item', 'app.speaker', 'app.user', 'app.hash', 'app.events_user');
 
 /**
  * setUp method
