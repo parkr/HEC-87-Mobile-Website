@@ -118,7 +118,7 @@ class UsersController extends AppController {
 				$email->to($user['User']['email']);
 				$email->subject('Reset your password');
 				$email->send("Hello,\n\nYou just requested to reset your password. You may do so here: ".$this->User->Hash->getLink($hash, $user['User']['email'])."\n\nSincerely,\nIT Manager\nHotel Ezra Cornell");
-				$this->Session->setFlash('Your request has been processed. Please check your email.');
+				$this->Session->setFlash('Your request has been processed. An email has been sent to your account.');
 				$this->redirect(array('action' => 'forgot'));
 			}else{
 				$this->Session->setFlash('Something went wrong with your request. Please try again.');
@@ -248,7 +248,7 @@ class UsersController extends AppController {
 		$user = $this->User->read(null, $id);
 		$this->User->bumpProfileViews();
  		$this->set('user', $user);
-		$this->set('title_for_layout', $user['User']['name']. "'s Profile");
+		$this->set('title_for_layout', $user['User']['name']);
 		$this->set('prevpage_for_layout', array('title' => ucwords(Inflector::pluralize($user['User']['type'])), 'routing' => array('controller' => $this->params['controller'], 'action' => Inflector::pluralize($user['User']['type']))));
  	}
 	
