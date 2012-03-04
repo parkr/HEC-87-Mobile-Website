@@ -7,7 +7,7 @@
 			<em><?php echo h($faq['Faq']['question']); ?></em>
 		</p>
 		<p>
-			<?php echo h($faq['Faq']['answer']); ?>&nbsp;
+			<?php echo nl2br($faq['Faq']['answer']); ?>&nbsp;
 		</p>
 	</div>
 <?php endforeach; ?>
