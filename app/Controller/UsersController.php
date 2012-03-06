@@ -218,7 +218,7 @@ class UsersController extends AppController {
 							$email->from(array('registration-noreply@hotelezracornell.com' => 'Hotel Ezra Cornell IT'));
 							$email->to($user['User']['email']);
 							$email->subject('Your Profile Has Been Successfully Created!');
-							$email->send("Hello ".$user['User']['first_name'].",\n\nYour profile on http://www.mobile.hotelezracornell.com/ has been successfully created! Make sure to complete your profile before HEC weekend (April 12-15, 2012). Check back soon, as features are added daily!\n\nSincerely,\nParker Moore\nIT Manager\nHotel Ezra Cornell");
+							$email->send("Hello ".$user['User']['first_name'].",\n\nYour profile on http://www.mobile.hotelezracornell.com/ has been successfully created! Make sure to complete your profile before HEC weekend (April 12-15, 2012). Check back soon, as features are added daily.\n\nHappy networking!\n\nSincerely,\nParker Moore\nIT Manager\nHotel Ezra Cornell");
 							$this->Session->setFlash('Your account has been successfully created and a confirmation email has been sent to your email address.');
 							$this->redirect('/');
 						} else {
