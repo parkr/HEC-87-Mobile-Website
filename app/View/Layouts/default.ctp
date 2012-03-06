@@ -2,18 +2,17 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<?php $this->Html->meta('icon'); ?>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+	<?php $this->Html->meta('icon'); ?>
 	<link rel="icon" href="<?php echo full_url(); ?>/img/hec-logo-icon.png">
-	<title><?php echo $title_for_layout; ?> &mdash; Hotel Ezra Cornell 87</title>
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile.structure-1.0.min.css" type="text/css" media="screen" charset="utf-8" /> 
-	<?php echo $this->Html->css("application"); ?>
 	<link rel="apple-touch-icon" href="img/hec-logo-icon.png" />
+	<title><?php echo $title_for_layout; ?> &mdash; Hotel Ezra Cornell 87</title>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" type="text/css" media="screen" charset="utf-8" /> 
+	<?php echo $this->Html->css("application"); ?>
 	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+	<script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 	<?php echo $this->Html->script("application"); ?>
 	<?php echo $scripts_for_layout; ?>
-	<script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
 		_gaq.push(['_setAccount', 'UA-22375846-2']);
@@ -29,8 +28,6 @@
 <body>
 	<div data-role="page" data-theme="a">
 		<div id="branding">
-		    <!--<h1>The Hotel Ezra Cornell</h1>
-		    <p>Showcasing Hospitality Education Through Student Leadership</p>-->
 			<?php 
 				echo $this->Html->link(
 					$this->Html->image(
