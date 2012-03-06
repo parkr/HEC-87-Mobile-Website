@@ -212,10 +212,15 @@ class UsersController extends AppController {
 						// Upload photo.
 						$this->request->data['User']['photo'] = $this->_uploadFile($this->request->data);
 						if ($this->User->save($this->request->data)) {
-							$id = $this->User->id;
-							$this->request->data['User'] = array_merge($this->request->data["User"], array('id' => $id));
-							$this->Auth->login($this->request->data['User']);
-							$this->redirect(array('controller' => 'users', 'action' => 'view', $this->Auth->user('id')));
+							$user = $this->request->data;
+							// Send email
+							$email = new CakeEmail();
+							$email->from(array('registration-noreply@hotelezracornell.com' => 'Hotel Ezra Cornell IT'));
+							$email->to($user['User']['email']);
+							$email->subject('Your Profile Has Been Successfully Created!');
+							$email->send("Hello ".$user['User']['first_name'].",\n\nYour profile on http://www.mobile.hotelezracornell.com/ has been successfully created! Make sure to complete your profile before HEC weekend (April 12-15, 2012). Check back soon, as features are added daily!\n\nSincerely,\nParker Moore\nIT Manager\nHotel Ezra Cornell");
+							$this->Session->setFlash('Your account has been successfully created and a confirmation email has been sent to your email address.');
+							$this->redirect('/');
 						} else {
 							$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
 						}
