@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+	<meta name="apple-mobile-web-app-capable" content="yes">
 	<?php $this->Html->meta('icon'); ?>
 	<link rel="icon" href="<?php echo full_url(); ?>/img/hec-logo-icon.png">
 	<link rel="apple-touch-icon" href="img/hec-logo-icon.png" />

@@ -311,6 +311,28 @@ class UsersController extends AppController {
 		$this->redirect('/');
 	}
 	
+	public function check_in($event_id = null){
+		$output = array(
+			'success' => false,
+			'message' => 'Error: not a POST or PUT request',
+			'user_id' => AuthComponent::user('id'),
+			'event_id' => $event_id
+		);
+		if($this->request->is('post') || $this->request->is('put')){
+			if(AuthComponent::user('id')){
+				if($event_id){
+					$output['success'] = true;
+					$output['message'] = "Checked in!";
+				}else{
+					$output['message'] = "No event id submitted.";
+				}
+			}else{
+				$output['message'] = "You must be logged in to check in to events.";
+			}
+		}
+		$this->set('output', $output);
+	}
+	
 	/**
 	 * Upload File Function
 	 * 

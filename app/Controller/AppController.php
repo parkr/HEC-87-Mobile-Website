@@ -12,7 +12,8 @@ class AppController extends Controller {
 					'fields' => array('username' => 'email')
 				)
 			)
-        )
+        ),
+		'RequestHandler'
     );
 	
 	public function isAuthorized($user) {

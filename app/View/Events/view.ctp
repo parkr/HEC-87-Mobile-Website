@@ -7,11 +7,8 @@ echo $this->Html->tag('h3', h($event['Event']['location']));
 ?>
 
 <?php if(AuthComponent::user('id')): ?>
-<a href="#" data-direction="reverse" class="ui-btn-left ui-btn ui-btn-icon-left ui-btn-corner-all ui-shadow ui-btn-up-a" data-theme="a" id="check_in_button">
-	<span class="ui-btn-inner ui-btn-corner-all">
-		<span class="ui-btn-text">Check In</span>
-	</span>
-</a>
+<a href="#" data-role="button" data-theme="a" id="check_in_button">Check In</a>
+<div class="details" id="check_in_error"></div>
 <?php endif; ?>
 
 <?php if($event['Event']['photo']): ?>

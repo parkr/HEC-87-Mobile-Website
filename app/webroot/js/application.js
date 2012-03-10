@@ -3,7 +3,7 @@ var HEC = {
 		if(document.location.pathname.search("program/view") >= 0){
 			console && console.log && console.log("checking in.");
 			// send ajax request to check the user in here.
-			var dasURL = document.location.href.substring(0, document.location.href.search("program/view")) + "profiles/check_in/" + document.location.href.substring(document.location.href.search("view/")+5);
+			var dasURL = document.location.href.substring(0, document.location.href.search("program/view")) + "profiles/check_in/" + document.location.href.substring(document.location.href.search("view/")+5) + ".json";
 			var ajaxSettings = {
 				url: dasURL,
 				dataType: "json",
@@ -13,11 +13,17 @@ var HEC = {
 					// Show modal?
 				},
 				success: function(data, textStatus, jqXHR){
-					console && console.log && console.log(data);
 					// Disable button and change text
+					if(data.success){
+						// Disable button & change text of button
+						$("#check_in_button span span.ui-btn-text").html(data.message);
+						$("#check_in_button").addClass('ui-disabled');
+					}else{
+						// Goddamned error.
+						$("#check_in_button span span.ui-btn-text").html(data.message);
+					}
 				}
 			}
-			console && console.log && console.log(ajaxSettings);
 			$.ajax(ajaxSettings);
 		}
 	}
