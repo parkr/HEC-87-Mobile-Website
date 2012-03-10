@@ -6,6 +6,14 @@ echo $this->Html->tag('h4', date("g:i a", strtotime($event['Event']['start_time'
 echo $this->Html->tag('h3', h($event['Event']['location']));
 ?>
 
+<?php if(AuthComponent::user('id')): ?>
+<a href="#" data-direction="reverse" class="ui-btn-left ui-btn ui-btn-icon-left ui-btn-corner-all ui-shadow ui-btn-up-a" data-theme="a" id="check_in_button">
+	<span class="ui-btn-inner ui-btn-corner-all">
+		<span class="ui-btn-text">Check In</span>
+	</span>
+</a>
+<?php endif; ?>
+
 <?php if($event['Event']['photo']): ?>
 	<?php echo $this->Html->tag('div', $this->Html->image($event['Event']['photo'], array('class' => 'event_photo')), array('class' => 'event')); ?>
 <?php endif; ?>
