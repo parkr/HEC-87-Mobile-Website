@@ -256,7 +256,7 @@ class UsersController extends AppController {
  		if (!$this->User->exists()) {
  			throw new NotFoundException(__('User does not exist.'));
  		}
-		
+		$this->User->recursive = 2;
 		$user = $this->User->read(null, $id);
 		$this->User->bumpProfileViews();
  		$this->set('user', $user);
