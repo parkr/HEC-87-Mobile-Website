@@ -10,8 +10,8 @@
 	<title><?php echo $title_for_layout; ?> &mdash; Hotel Ezra Cornell 87</title>
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" type="text/css" media="screen" charset="utf-8" /> 
 	<?php echo $this->Html->css("application"); ?>
-	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
-	<script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+	<script async src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+	<script async src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 	<?php echo $this->Html->script("application"); ?>
 	<?php echo $scripts_for_layout; ?>
 	<script type="text/javascript">
