@@ -79,7 +79,8 @@ class Event extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
-		'Speaker'
+		'Speaker',
+		'CheckIn'
 	);
 	public $hasAndBelongsToMany = "User";
 

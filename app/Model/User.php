@@ -14,7 +14,10 @@ class User extends AppModel {
 	    'name' => 'CONCAT(User.first_name, " ", User.last_name)',
 		'formal_name' => 'CONCAT(User.last_name, ", ", User.first_name)',
 	);
-	public $hasMany = 'Hash';
+	public $hasMany = array(
+		'Hash',
+		'CheckIn'
+	);
 	public $hasAndBelongsToMany = array(
         'Event' => array(
 			'className'              => 'Event',
