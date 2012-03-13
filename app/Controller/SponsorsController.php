@@ -56,7 +56,11 @@ class SponsorsController extends AppController {
 		$sponsor = $this->Sponsor->read(null, $id);
 		$this->set('sponsor', $sponsor);
 		$this->set('title_for_layout', $sponsor['Sponsor']['name'] . $this->runningPageTitle);
-		$this->set('prevpage_for_layout', array('title' => ucwords($this->params['controller']), 'routing' => array('controller' => $this->params['controller'], 'action' => 'index')));
+		$this->set('prevpage_for_layout', array(
+				'title' => ucwords($sponsor['Sponsor']['giving_level']), 
+				'routing' => array('controller' => $this->params['controller'], 'action' => $sponsor['Sponsor']['giving_level'])
+			)
+		);
 	}
 
 }
