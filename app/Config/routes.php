@@ -54,6 +54,11 @@
 	Router::connect('/feedback', array('controller' => 'thoughts'));
 	Router::connect('/feedback/:action', array('controller' => 'thoughts'));
 	Router::connect('/feedback/:action/*', array('controller' => 'thoughts'));
+	Router::connect('/sponsors', array('controller' => 'sponsors', 'action' => 'index'));
+	Router::connect('/sponsors/', array('controller' => 'sponsors', 'action' => 'index'));
+	Router::connect('/sponsors/view', array('controller' => 'sponsors', 'action' => 'view'));
+	Router::connect('/sponsors/view/', array('controller' => 'sponsors', 'action' => 'view'));
+	Router::connect('/sponsors/*', array('controller' => 'sponsors', 'action' => 'sponsorsOfGivingLevel'));
 	
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 

@@ -1,14 +1,14 @@
 <?php
 
-	$sponsors_links = array();
-	foreach($sponsors as $sponsor){
-		$sponsors_links[] = $this->Html->link($sponsor['Sponsor']['name'], array('controller' => 'sponsors', 'action' => 'view', $sponsor['Sponsor']['id']));
+	$giving_links = array();
+	foreach($givingLevels as $givingLevel){
+		$giving_links[] = $this->Html->link(ucwords($givingLevel), array('controller' => 'sponsors', 'action' => $givingLevel));
 	}
 	
-	if(count($sponsors_links) == 0){
+	if(count($giving_links) == 0){
 		echo "There are no sponsors at this time.";
 	}else{
-		echo $this->Html->nestedList($sponsors_links, array(
+		echo $this->Html->nestedList($giving_links, array(
 			'data-role' => 'listview',
 			'id' => 'nodes',
 			'data-inset' => 'true',

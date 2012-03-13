@@ -7,10 +7,11 @@ App::uses('AppController', 'Controller');
  */
 class SponsorsController extends AppController {
 	public $runningPageTitle = "Sponsors";
+	public $givingLevels = array('platinum', 'gold', 'silver', 'bronze', 'friends');
 	
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('view');
+		$this->Auth->allow('view', 'sponsorsOfGivingLevel');
 	}
 
 /**
@@ -19,9 +20,26 @@ class SponsorsController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->set('title_for_layout', $this->runningPageTitle);
-		$this->set('sponsors', $this->Sponsor->find('all', array('order' => 'Sponsor.name ASC')));
-		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
+		$this->set(array(
+			'title_for_layout' => $this->runningPageTitle,
+			'givingLevels' => $this->givingLevels,
+			'prevpage_for_layout' => array('title' => "Home", 'routing' => '/')
+		));
+	}
+	
+	public function sponsorsOfGivingLevel($givingLevel){
+		$this->set(array(
+			'title_for_layout' => ucwords($givingLevel),
+			'sponsors' => $this->Sponsor->find(
+				'all', 
+				array(
+					'conditions' => array('Sponsor.giving_level' => strtolower($givingLevel)),
+					'order' => 'Sponsor.name ASC'
+				)
+			),
+			'prevpage_for_layout' => array('title' => "Sponsors", 'routing' => array("controller" => 'sponsors', 'action' => 'index'))
+		));
+		
 	}
 
 /**
