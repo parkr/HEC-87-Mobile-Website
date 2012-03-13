@@ -57,7 +57,7 @@
 	Router::connect('/sponsors', array('controller' => 'sponsors', 'action' => 'index'));
 	Router::connect('/sponsors/', array('controller' => 'sponsors', 'action' => 'index'));
 	Router::connect('/sponsors/view', array('controller' => 'sponsors', 'action' => 'view'));
-	Router::connect('/sponsors/view/', array('controller' => 'sponsors', 'action' => 'view'));
+	Router::connect('/sponsors/view/*', array('controller' => 'sponsors', 'action' => 'view'));
 	Router::connect('/sponsors/*', array('controller' => 'sponsors', 'action' => 'sponsorsOfGivingLevel'));
 	
 /**
