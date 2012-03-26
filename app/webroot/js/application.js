@@ -1,7 +1,11 @@
 var HEC = {
+	debug: function(){
+		var args = Array.prototype.slice.call(arguments, 0);
+		if(console && console.log){ console.log(args); }
+	},
 	checkin: function(){
 		if(document.location.pathname.search("program/view") >= 0){
-			console && console.log && console.log("checking in.");
+			HEC.debug("checking in.");
 			// send ajax request to check the user in here.
 			var dasURL = document.location.href.substring(0, document.location.href.search("program/view")) + "check_ins/check_in/" + document.location.href.substring(document.location.href.search("view/")+5) + ".json";
 			var ajaxSettings = {
@@ -9,7 +13,7 @@ var HEC = {
 				dataType: "json",
 				type: "POST",
 				error: function(jqXHR, textStatus, theErrorThrown){
-					console && console.log && console.log(textStatus, theErrorThrown);
+					HEC.debug(textStatus, theErrorThrown);
 					// Show modal?
 				},
 				success: function(data, textStatus, jqXHR){
@@ -23,13 +27,13 @@ var HEC = {
 						$("#check_in_button span span.ui-btn-text").html(data.message);
 					}
 				}
-			}
+			};
 			$.ajax(ajaxSettings);
 		}
 	},
 	hasCheckedIn: function(){
 		if(document.location.pathname.search("program/view") >= 0){
-			console && console.log && console.log("checking in.");
+			HEC.debug("checking in.");
 			// send ajax request to check the user in here.
 			var dasURL = document.location.href.substring(0, document.location.href.search("program/view")) + "check_ins/has_checked_in_here/" + document.location.href.substring(document.location.href.search("view/")+5) + ".json";
 			var ajaxSettings = {
@@ -37,7 +41,7 @@ var HEC = {
 				dataType: "json",
 				type: "POST",
 				error: function(jqXHR, textStatus, theErrorThrown){
-					console && console.log && console.log(textStatus, theErrorThrown);
+					HEC.debug(textStatus, theErrorThrown);
 					// Show modal?
 				},
 				success: function(data, textStatus, jqXHR){
@@ -51,11 +55,11 @@ var HEC = {
 						$("#check_in_button span span.ui-btn-text").html(data.message);
 					}
 				}
-			}
+			};
 			$.ajax(ajaxSettings);
 		}
 	}
-}
+};
 
 $(document).live('pageinit', function(event) {
     $.extend($.mobile, {
