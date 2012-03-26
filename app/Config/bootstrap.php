@@ -66,7 +66,7 @@ CakePlugin::loadAll();
 
 function full_url(){
 	if($_SERVER['SERVER_NAME'] === "localhost"){
-		return "http://localhost/HEC/Mobile-New";
+		return "http://localhost/HEC/Mobile";
 	}else{
 		if($_SERVER['SERVER_NAME'] === "hec.parkermoore.de"){
 			return "http://hec.parkermoore.de";
