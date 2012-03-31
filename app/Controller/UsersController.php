@@ -98,7 +98,26 @@ class UsersController extends AppController {
 		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
 		if ($this->request->is('post')) {
 			if ($this->Auth->login()) {
-				return $this->redirect($this->Auth->redirect());
+				$user = $this->User->findByEmail($this->request->data['User']['email']);
+				if($user['User']['is_new_account'] == 1){
+					// create hash. redirect to hash url.
+					$this->User->Hash->create();
+					$hash = array(
+						'Hash' => array(
+							'user_id' => $user['User']['id'],
+							'hash' => $this->User->Hash->generateNew($user['User']['email']),
+							'expires' => date('Y-m-d H:i:s', mktime(date("H"), date("i"), date("s"), date("n"), (date("j")+14), date("Y")))." EST" // 14 days to use.
+						)
+					);
+					if($this->User->Hash->save($hash)){
+						$this->Session->setFlash('Your account is marked as new. Please choose a new password.');
+						$this->redirect($this->User->Hash->getLink($hash, $user['User']['email']));
+					}else{
+						$this->Session->setFlash('Something went wrong with your request. Please try again.');
+					}
+				}else{
+					return $this->redirect($this->Auth->redirect());
+				}
 			} else {
 				$this->Session->setFlash(__('Username or password is incorrect or you are not a registered user.'), 'default', array(), 'auth');
 			}
@@ -144,7 +163,8 @@ class UsersController extends AppController {
 				// Is the password confirmed?
 				if($this->request->data['User']['password'] == $this->request->data['User']['confirm_password']){
 					// Set new password
-					if ($this->User->save($this->request->data, true, array('password'))) {
+					$this->request->data['User']['is_new_account'] = 0;
+					if ($this->User->save($this->request->data, true, array('password', 'is_new_account'))) {
 						$this->Session->setFlash('Your password has been updated.');
 						$this->redirect($this->Auth->loginRedirect);
 					}else{
