@@ -188,7 +188,7 @@ class UsersController extends AppController {
 			$this->set('type', 
 						(isset($this->params->query['type']) && $this->params->query['type'] != "" && in_array($this->params->query['type'], $this->account_types)) 
 							? $this->params->query['type'] 
-							: "student"
+							: ($this->params->query['invite'] == "hecattendee") ? "attendee" : "student"
 			);
 			if ($this->request->is('post')) {
 				$this->User->create();
