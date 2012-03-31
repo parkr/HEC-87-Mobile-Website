@@ -54,7 +54,7 @@ class User extends AppModel {
 			$newpv = $this->data[$this->alias]['profile_views'] += 1;
 			$this->set('profile_views', $newpv);
 			$this->data['User']['profile_views'] = $newpv;
-			return $this->save();
+			return $this->save(null, true, array('profile_views'));
 		}else{
 			return false;
 		}
