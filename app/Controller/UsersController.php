@@ -164,6 +164,7 @@ class UsersController extends AppController {
 				if($this->request->data['User']['password'] == $this->request->data['User']['confirm_password']){
 					// Set new password
 					$this->request->data['User']['is_new_account'] = 0;
+					$this->request->data['please_change_password'] = TRUE;
 					if ($this->User->save($this->request->data, true, array('password', 'is_new_account'))) {
 						$this->Session->setFlash('Your password has been updated.');
 						$this->redirect($this->Auth->loginRedirect);
