@@ -120,6 +120,8 @@ class UsersController extends AppController {
 				}
 			} else {
 				$this->Session->setFlash(__('Username or password is incorrect or you are not a registered user.'), 'default', array(), 'auth');
+				// Log error.
+				CakeLog::write('login_error', $this->request->data['User']['email'].' tried to login with hashed password '.AuthComponent::password($this->request->data['User']['password']).' and failed.');
 			}
 		}
 	}
