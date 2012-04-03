@@ -151,6 +151,7 @@ class UsersController extends AppController {
 			}
 		}
 	}
+	
 	public function reset($email, $hash_code) {
 		$user = $this->User->findByEmail($email);
 		$hash = $this->User->Hash->findByHash($hash_code);
@@ -162,9 +163,9 @@ class UsersController extends AppController {
 			if($this->request->is('post') || $this->request->is('put')){
 				// Is the password confirmed?
 				if($this->request->data['User']['password'] == $this->request->data['User']['confirm_password']){
-					// Set new password
+					// Set new password, is_new_account
 					$this->request->data['User']['is_new_account'] = 0;
-					$this->request->data['User']['please_change_password'] = TRUE;
+					$this->request->data['User']['password'] = AuthComponent::password($this->request->data['User']['password']);
 					if ($this->User->save($this->request->data, true, array('password', 'is_new_account'))) {
 						$this->Session->setFlash('Your password has been updated.');
 						$this->redirect($this->Auth->loginRedirect);
@@ -183,6 +184,7 @@ class UsersController extends AppController {
 			$this->redirect(array('controller' => 'users', 'action' => 'forgot'));
 		}
 	}
+	
 	public function logout() {
 		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
 		$redirect_to = $this->Auth->logout();
@@ -232,6 +234,8 @@ class UsersController extends AppController {
 						
 						// Upload photo.
 						$this->request->data['User']['photo'] = $this->_uploadFile($this->request->data);
+						$this->request->data['User']['password'] = AuthComponent::password($this->request->data['User']['password']);
+						
 						if ($this->User->save($this->request->data)) {
 							$user = $this->request->data;
 							// Send email
@@ -304,7 +308,7 @@ class UsersController extends AppController {
 			$this->request->data['User']['bio'] = normalize_newlines($this->request->data['User']['bio']);
 			
 			if ($this->User->save($this->request->data, true, $fieldList)) {
-				$this->Session->setFlash(__('Your profile has been saved!'));
+				$this->Session->setFlash(__('Your profile has been saved successfully.'));
 				$this->redirect(array('action' => 'edit', $id));
 			} else {
 				$this->Session->setFlash(__('Your profile could not be saved. Please, try again.'));

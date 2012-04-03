@@ -29,10 +29,6 @@ class User extends AppModel {
 	);
 	
 	public function beforeSave() {
-		if (isset($this->data[$this->alias]['password']) && $this->data[$this->alias]['password'] != "" && 
-			isset($this->data[$this->alias]['please_change_password']) && $this->data[$this->alias]['please_change_password'] == TRUE){
-			$this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
-		}
 		if(isset($this->data[$this->alias]['phone_number'])){
 			$num = $this->data[$this->alias]['phone_number'];
 			$num = preg_replace('/(-|_| |\+|\(|\)|\.)+/', "", $num);
