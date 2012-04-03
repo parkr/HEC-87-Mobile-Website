@@ -7,7 +7,7 @@
 	<?php $this->Html->meta('icon'); ?>
 	<link rel="icon" href="<?php echo full_url(); ?>/img/hec-logo-icon.png">
 	<link rel="apple-touch-icon" href="<?php echo full_url(); ?>/img/hec-logo-icon.png" />
-	<title><?php echo $title_for_layout; ?> &mdash; Hotel Ezra Cornell 87</title>
+	<title><?php echo $title_for_layout; ?> &raquo; Hotel Ezra Cornell 87</title>
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile.structure-1.0.1.min.css" type="text/css" media="screen" charset="utf-8" /> 
 	<?php echo $this->Html->css("application"); ?>
 	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
