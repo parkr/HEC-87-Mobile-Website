@@ -14,10 +14,7 @@
 		?>
 		<p id="details">
 			<?php
-				$paras = explode("\n\n", $sponsor['Sponsor']['details']);
-				foreach($paras as $para){
-					echo $this->Html->para('details', $para);
-				}
+				echo $this->Html->tag('div', nl2br($sponsor['Sponsor']['details']), array('class' => 'details'));
 			?>
 		</p>
 	</p>
