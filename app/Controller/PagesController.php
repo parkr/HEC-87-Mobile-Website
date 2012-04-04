@@ -11,7 +11,7 @@ class PagesController extends AppController {
 	
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow('home', 'updates', 'faqs', 'feedback', 'contact');
+		$this->Auth->allow('home', 'updates', 'faqs', 'feedback', 'contact', 'about');
 	}
 	
 	public function home(){
@@ -36,6 +36,10 @@ class PagesController extends AppController {
 	}
 	public function contact(){
 		$this->set("title_for_layout", "Contact");
+		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
+	}
+	public function about(){
+		$this->set("title_for_layout", "About");
 		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
 	}
 }
