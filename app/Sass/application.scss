@@ -13,6 +13,7 @@
 @import "pages/feedback";
 @import "pages/menus";
 @import "pages/pages";
+@import "pages/sponsors";
 @import "pages/users";
 
 // Customizations
@@ -53,16 +54,6 @@
 		text-align: left;
 		text-indent: 40px;
 	}
-}
-
-#sponsor_page {
-	text-align: left;
-	img#logo {
-	}	
-	p.details {
-		text-align: left;
-	}
-	
 }
 
 dl {
