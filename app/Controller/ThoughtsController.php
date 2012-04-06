@@ -21,7 +21,15 @@ class ThoughtsController extends AppController {
 	public function index() {
 		$this->set('prevpage_for_layout', array('title' => "Home", 'routing' => '/'));
 		$this->set('title_for_layout', 'Feedback');
-		$this->set('events', $this->Thought->Event->find('all', array('conditions' => array('Event.can_leave_feedback' => '1'))));
+		$this->set('events', 
+			$this->Thought->Event->find(
+				'all', 
+				array(
+					'conditions' => array('Event.can_leave_feedback' => '1'), 
+					'order' => array('Event.start_time ASC')
+				)
+			)
+		);
 	}
 
 /**
