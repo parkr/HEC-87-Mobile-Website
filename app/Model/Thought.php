@@ -7,6 +7,32 @@ App::uses('AppModel', 'Model');
  * @property User $User
  */
 class Thought extends AppModel {
+	
+	public $options = array(
+		'7' => '7 - Great',
+		'6' => '6',
+		'5' => '5',
+		'4' => '4 - Average',
+		'3' => '3',
+		'2' => '2',
+		'1' => '1 - Poor'
+	);
+	public $questions = array(
+		'educational' => array(
+			'Session Topic',
+			'Educational Value',
+			'Speaker Engagement / Presentation',
+			'Meets Expectations'
+		),
+		'fb' => array(
+			'Theme',
+			'Food Quality',
+			'Beverage Quality',
+			'Service',
+			'Ambiance'
+		)
+	);
+	
 /**
  * Validation rules
  *
@@ -24,6 +50,56 @@ class Thought extends AppModel {
 			),
 		),
 		'user_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'question_1' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'question_2' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'question_3' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'question_4' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'question_5' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
