@@ -1,7 +1,7 @@
 <div class="thoughts form">
 <?php echo $this->Form->create('Thought');?>
 	<fieldset>
-		<legend><?php echo __('Submit Feedback for \''.$event['Event']['name']."'"); ?></legend>
+		<legend><?php echo __('Please rate the following for \''.$event['Event']['name']."':"); ?></legend>
 	<?php
 		echo $this->Form->input('event_id', array('type' => 'hidden', 'value' => $event['Event']['id']));
 		echo $this->Form->input('user_id', array('type' => 'hidden', 'value' => (AuthComponent::user('id') > 0) ? AuthComponent::user('id') : 0));
@@ -16,7 +16,7 @@
 		}
 		echo $this->Form->input('comments');
 		if(!AuthComponent::user('id')){
-			echo $this->Html->tag('h4', __('Sign in or input your name and email:'), array('class' => 'input'));
+			echo $this->Html->tag('h4', __('Sign in or optionally input your name and email:'), array('class' => 'input'));
 			echo $this->Form->input('name');
 			echo $this->Form->input('email');
 		}
