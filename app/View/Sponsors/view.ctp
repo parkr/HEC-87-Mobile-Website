@@ -3,14 +3,17 @@
 	<p>
 		<?php
 		if($sponsor['Sponsor']['photo_url'] && $sponsor['Sponsor']['photo_url'] != ""){
+			$img_prefs = array(
+				'alt' => $sponsor['Sponsor']['name']."'s logo",
+				'target' => '_blank',
+				'id' => 'logo'
+			);
+			if($sponsor['Sponsor']['website'] && $sponsor['Sponsor']['website'] != NULL){
+				$img_prefs['url'] = (strpos($sponsor['Sponsor']['website'], 'http://') != FALSE) ? $sponsor['Sponsor']['website'] : 'http://'.$sponsor['Sponsor']['website'];
+			}
 			echo $this->Html->image(
 				$sponsor['Sponsor']['photo_url'], 
-				array(
-					'alt' => $sponsor['Sponsor']['name']."'s logo", 
-					'url' => (strpos($sponsor['Sponsor']['website'], 'http://') != FALSE) ? $sponsor['Sponsor']['website'] : 'http://'.$sponsor['Sponsor']['website'],
-					'target' => '_blank',
-					'id' => 'logo'
-				)
+				$img_prefs
 			);
 		}
 		?>
