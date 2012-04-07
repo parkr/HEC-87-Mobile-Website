@@ -1,3 +1,11 @@
 #menus {
-	text-align: center;
+	text-align: left;
+	#menu_titles {
+		text-align: center;
+	}
+	.caption {
+		font-size: 0.85em;
+		color: #666;
+		font-style: italic;
+	}
 }
