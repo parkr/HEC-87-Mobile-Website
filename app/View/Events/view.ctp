@@ -18,7 +18,7 @@ echo $this->Html->tag('h3', h($event['Event']['location']));
 <dl>
 	<?php if($event['Event']['description']): ?>
 	<dt><?php echo __('Description'); ?></dt>
-	<dd><?php echo h($event['Event']['description']); ?></dd>
+	<dd><?php echo nl2br($event['Event']['description']); ?></dd>
 	<?php endif; ?>
 	<?php if($event['Speaker']): ?>
 	<dt><?php echo __('Speakers'); ?></dt>
