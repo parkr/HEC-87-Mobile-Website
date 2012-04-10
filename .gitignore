@@ -48,3 +48,5 @@ tmtags
 # Project-Specific
 app/webroot/userphotos/*
 app/remote_pull.sh
+app/Migration/*.csv
+app/Migration/*.py
