@@ -24,7 +24,10 @@ class UsersController extends AppController {
 		)
 	);
 	public $sort_fields = array('first_name', 'last_name', 'position', 'company');
-	public $invite_codes = array('hecstudent', 'hecattendee');
+	public $invite_codes = array(
+		'hecstudent' => 'student', 
+		'hecattendee' => 'attendee'
+	);
 	public $alias = "Profiles";
 	public $uploadsFolder = "userphotos";
 	public $uploadsFileTypes = array('image/jpeg', 'image/png', 'image/gif');
@@ -209,12 +212,8 @@ class UsersController extends AppController {
 		}
 		
 		// Check for the existence and validity of invite code
-		if(isset($this->params->query) && isset($this->params->query['invite']) && in_array($this->params->query['invite'], $this->invite_codes)){
-			$this->set('type', 
-						(isset($this->params->query['type']) && $this->params->query['type'] != "" && in_array($this->params->query['type'], $this->account_types)) 
-							? $this->params->query['type'] 
-							: ($this->params->query['invite'] == "hecattendee") ? "attendee" : "student"
-			);
+		if(isset($this->params->query) && isset($this->params->query['invite']) && array_key_exists($this->params->query['invite'], $this->invite_codes)){
+			$this->set('type', $this->invite_codes[$this->params->query['invite']]);
 			if ($this->request->is('post')) {
 				$this->User->create();
 				// Utilizing the confirm_password concept
@@ -223,7 +222,7 @@ class UsersController extends AppController {
 				} else {
 					// Check to see if this email already exists. Unique emails enforced.
 					if($this->User->emailExists($this->request->data['User']['email'])){
-						$this->Session->setFlash(__('The email you entered is already associated with another user.'));
+						$this->Session->setFlash(__('The email you entered is already associated with another user. '.$this->Html->link('Forgot your password?', array('action' => 'forgot'))));
 					}else{
 						// Automatically set role and date_created
 						$this->request->data['User']['role'] = "user";
