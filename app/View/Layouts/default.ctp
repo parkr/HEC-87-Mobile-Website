@@ -65,7 +65,6 @@
 				<?php echo $flash; ?>
 			</div><?php endif; ?>
 			<?php echo $content_for_layout; ?>
-			<div id="authMessage" class="message">We are currently undergoing maintenance. If things don't work, we are aware of them and will push a fix soon. Thank you for your patience!</div>
 			<div id="user_status">
 				<?php 
 					if(AuthComponent::user('id') > 0){ 
