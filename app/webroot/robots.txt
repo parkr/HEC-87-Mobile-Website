@@ -1,0 +1,4 @@
+# robots.txt for http://www.mobile.hotelezracornell.com/
+
+User-agent: *
+Disallow: /tmp/ # these will soon disappear
