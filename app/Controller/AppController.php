@@ -13,7 +13,8 @@ class AppController extends Controller {
 				)
 			)
         ),
-		'RequestHandler'
+		'RequestHandler',
+		'RememberMe.RememberMe'
     );
 	
 	public function isAuthorized($user) {
@@ -25,7 +26,10 @@ class AppController extends Controller {
 
     function beforeFilter() {
 		$this->Auth->allow('index', 'view');
-		//$this->Auth->allow('*');
+		if ($this->Auth->user() && $this->params['action'] != 'logout') {
+			$this->RememberMe->checkUser();
+		}
+		
     }
 	
 }

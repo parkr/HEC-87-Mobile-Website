@@ -112,6 +112,7 @@ class UsersController extends AppController {
 							'expires' => date('Y-m-d H:i:s', mktime(date("H"), date("i"), date("s"), date("n"), (date("j")+14), date("Y")))." EST" // 14 days to use.
 						)
 					);
+					$this->RememberMe->setRememberMe($this->request->data['User']);
 					if($this->User->Hash->save($hash)){
 						$this->Session->setFlash('Your account is marked as new. Please choose a new password.');
 						$this->redirect($this->User->Hash->getLink($hash, $user['User']['email']));
@@ -119,6 +120,7 @@ class UsersController extends AppController {
 						$this->Session->setFlash('Something went wrong with your request. Please try again.');
 					}
 				}else{
+					$this->RememberMe->setRememberMe($this->request->data['User']);
 					return $this->redirect($this->Auth->redirect());
 				}
 			} else {
