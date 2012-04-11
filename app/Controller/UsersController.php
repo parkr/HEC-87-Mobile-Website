@@ -215,6 +215,11 @@ class UsersController extends AppController {
 		if(isset($this->params->query) && isset($this->params->query['invite']) && array_key_exists($this->params->query['invite'], $this->invite_codes)){
 			$this->set('type', $this->invite_codes[$this->params->query['invite']]);
 			if ($this->request->is('post')) {
+				if($this->User->emailExists($this->request->data['User']['email'])){
+					$this->Session->setFlash('That email has already been registered. Maybe you forgot your password?');
+					$this->redirect(array('controller' => 'users', 'action' => 'forgot'));
+				}
+				
 				$this->User->create();
 				// Utilizing the confirm_password concept
 				if($this->request->data['User']['password'] != $this->request->data['User']['confirm_password']){
