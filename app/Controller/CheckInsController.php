@@ -31,7 +31,7 @@ class CheckInsController extends AppController {
 					));
 					if ($this->CheckIn->save($data)) {
 						$output['success'] = true;
-						$output['message'] = "Checked in!";
+						$output['message'] = "Undo Check-In";
 					} else {
 						$output['message'] = "Could not check you in.";
 					}
@@ -67,10 +67,50 @@ class CheckInsController extends AppController {
 					if ($count > 0) {
 						$output['success'] = true;
 						$output['has_checked_in'] = true;
-						$output['message'] = "Checked in!";
+						$output['message'] = "Undo Check-In";
 					} else {
 						$output['success'] = true;
 						$output['message'] = "Check In";
+					}
+				}else{
+					$output['message'] = "No event id submitted.";
+				}
+			}else{
+				$output['message'] = "You must be logged in to check in to events.";
+			}
+			
+		}
+		$this->set('output', $output);
+	}
+	
+	public function undo_check_in($event_id = null){
+		$output = array(
+			'success' => false,
+			'has_checked_in' => false,
+			'message' => 'Error: not a POST or PUT request',
+			'user_id' => AuthComponent::user('id'),
+			'event_id' => $event_id
+		);
+		if($this->request->is('post') || $this->request->is('put')){
+			if($output['user_id']){
+				if($output['event_id'] && $output['event_id'] > 0){
+					$count = $this->CheckIn->find('count', array(
+						'conditions' => array(
+							'CheckIn.user_id' => $output['user_id'],
+							'CheckIn.event_id' => $output['event_id']
+						)
+					));
+					if ($count > 0) {
+						$this->CheckIn->deleteAll(array(
+							'CheckIn.user_id' => $output['user_id'],
+							'CheckIn.event_id' => $output['event_id']
+						), false);
+						$output['success'] = true;
+						$output['has_checked_in'] = true;
+						$output['message'] = "Check-In";
+					} else {
+						$output['success'] = false;
+						$output['message'] = "You have not checked in here yet. You cannot undo a check in until you have check in.";
 					}
 				}else{
 					$output['message'] = "No event id submitted.";
