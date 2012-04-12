@@ -12,7 +12,6 @@
 			echo $this->Html->image(
 				$speaker['Speaker']['photo'],
 				array(
-					'width' => '300',
 					'alt' => $speaker['Speaker']['name']
 				)
 			);

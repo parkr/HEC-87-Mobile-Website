@@ -50,6 +50,9 @@
 
 #speaker_page, #profile {
 	text-align: left;
+	img {
+		max-width: 100%;
+	}
 	p#bio, p.bio {
 		text-align: left;
 		text-indent: 40px;
