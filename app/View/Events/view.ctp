@@ -11,6 +11,10 @@ echo $this->Html->tag('h3', h($event['Event']['location']));
 <div class="details" id="check_in_error"></div>
 <?php endif; ?>
 
+<?php if($event['Event']['can_leave_feedback'] == 1 && strtotime($event['Event']['end_time']) < time()): ?>
+	<a data-role="button" href="<?php echo $this->Html->url(array('controller' => 'thoughts', 'action' => 'add', $event['Event']['id'])); ?>">Submit Feedback</a>
+<?php endif; ?>
+
 <?php if($event['Event']['photo']): ?>
 	<?php echo $this->Html->tag('div', $this->Html->image($event['Event']['photo'], array('class' => 'event_photo')), array('class' => 'event')); ?>
 <?php endif; ?>
