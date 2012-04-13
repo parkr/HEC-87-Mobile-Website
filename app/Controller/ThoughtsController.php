@@ -25,7 +25,10 @@ class ThoughtsController extends AppController {
 			$this->Thought->Event->find(
 				'all', 
 				array(
-					'conditions' => array('Event.can_leave_feedback' => '1'), 
+					'conditions' => array(
+						'Event.can_leave_feedback' => '1', 
+						'Event.start_time <=' => date('Y-m-d H:i:s'),
+					), 
 					'order' => array('Event.start_time ASC')
 				)
 			)
@@ -58,13 +61,14 @@ class ThoughtsController extends AppController {
 			$thought = $this->Thought->find('first', array('conditions' => array('Thought.event_id' => $event_id, 'Thought.user_id' => $user_id)));
 			$this->Thought->id = $thought['Thought']['id'];
 			if($this->Thought->exists()){
-				$this->redirect(array('action' => 'edit', $event_id));
+				//$this->redirect(array('action' => 'edit', $event_id));
+				$this->Session->setFlash('You have already submitted feedback for this event.');
+				$this->redirect(array('action' => 'index'));
 			}else{
 				$this->Thought->id = NULL;
 			}
 		}
 		
-		$this->set('prevpage_for_layout', array('title' => "Feedback", 'routing' => array('action' => 'index')));
 		if ($this->request->is('post')) {
 			$this->Thought->create();
 			if ($this->Thought->save($this->request->data)) {
@@ -78,6 +82,9 @@ class ThoughtsController extends AppController {
 		$this->set('options', $this->Thought->options);
 		$this->set('questions', $this->Thought->questions);
 		
+		$this->set('title_for_layout', 'Submit Feedback');
+		$this->set('prevpage_for_layout', array('title' => "Feedback", 'routing' => array('action' => 'index')));
+		
 		//$events = $this->Thought->Event->find('list');
 		//$users = $this->Thought->User->find('list');
 		//$this->set(compact('events', 'users'));
@@ -90,6 +97,7 @@ class ThoughtsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		$this->set('title_for_layout', 'Edit Feedback');
 		$this->set('prevpage_for_layout', array('title' => "Feedback", 'routing' => array('action' => 'index')));
 		$this->Thought->id = $id;
 		if (!$this->Thought->exists()) {
